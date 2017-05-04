@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %} 
+{% block scripts %} 
+  {{super()}}
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.mobile.custom.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+  <script>  
+    $(document).ready(function() {
+        $("#do").click(function() {
+            window.location.replace("{{url_for('do')}}");
+        });
+        $("#create").click(function() {
+            window.location.replace("{{url_for('create')}}");
+        });
+    });
+  </script>
+{% endblock %} 
+{% block title %}
+  Create a new task
+{% endblock %} 
+{% block navbar %}
+  <div class="navbar">
+    <button type="button" class="btn btn-primary navbar-btn" id="do">Do</button>
+    <button type="button" class="btn btn-primary navbar-btn" id="create">Create</button>
+  </div>
+{% endblock %} 
+
+{% block content %}
+  <h1>Create a new task:</h1>
+  
+{% endblock %}
