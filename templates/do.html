@@ -6,7 +6,7 @@
   <script>  
     $(document).ready(function() {
         $("#do").click(function() {
-            window.location.replace("{{url_for('do')}}");
+            window.location.replace("{{url_for('complete')}}");
         });
         $("#create").click(function() {
             window.location.replace("{{url_for('create')}}");
@@ -19,7 +19,7 @@
 {% endblock %} 
 {% block navbar %}
   <div class="navbar">
-    <button type="button" class="btn btn-primary navbar-btn" id="do">Do</button>
+    <button type="button" class="btn btn-primary navbar-btn" id="complete">complete</button>
     <button type="button" class="btn btn-primary navbar-btn" id="create">Create</button>
   </div>
 {% endblock %} 
