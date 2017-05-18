@@ -7,15 +7,7 @@
   {{super()}}
   <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.mobile.custom.min.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-  <script>  
-    $(document).ready(function() {
-        $("#do").click(function() {
-            window.location.replace("{{url_for('do')}}");
-        });
-        $("#create").click(function() {
-            window.location.replace("{{url_for('create')}}");
-        });
-    });
+  <script>
   </script>
 {% endblock %} 
 {% block title %}
@@ -33,6 +25,7 @@
 		</div>
 
 		<div class="row text-center" data-toggle="buttons" name="time">
+			Task duration:
 			<label class="btn btn-primary ">
 				<input type="radio" name="time" value="1m" id="opt-1m" autocomplete="off" checked> 1m
 			</label>
@@ -54,8 +47,7 @@
 
 		<div class="row text-center">
 			<select class="form-control" name="category">
-				{% for i in ['sport & body', 'posiTask', 'socializing', 'friendships and family', 'adventures',
-							  'waste my time', 'read and learn', 'be good', 'enviroment', 'music and art', 'kids']%}
+				{% for i in types %}
 				  <option>{{ i }}</option>
 				{% endfor %}
 			</select>
@@ -72,7 +64,6 @@
 				<input type="radio" name="location" value="online" id="opt-outdoor" autocomplete="off"> Online
 			</label>
 		</div>
-
 
 		<div class="row text-center">
 			<button id = "createBtn" class="btn btn-success" type="submit">Create</button>
