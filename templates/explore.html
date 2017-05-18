@@ -18,6 +18,7 @@
 			var panel_body_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var panel_footer_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var task_type_index = 0
+			$("#creation-alert").fadeOut(2000);
 			{% for task_type in tasks %}
 				{
 					var carousel_content = ""
@@ -111,7 +112,9 @@
 {% block content %}
 
     {% for message in get_flashed_messages() %}
-        <div class=flash>{{ message }}</div>
+		<div id="creation-alert" class="alert alert-success">
+		  <strong>{{ message }}</strong>
+		</div>
     {% endfor %}
 
 	<div class="container">
