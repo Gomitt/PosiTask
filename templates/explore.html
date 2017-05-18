@@ -20,6 +20,7 @@
 			var panel_footer_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var task_type_index = 0
 			$("#creation-alert").fadeOut(2000);
+			console.debug("max_id = {{num_tasks}}")
 			{% for task_type in tasks %}
 				{
 					console.debug("task_type = {{task_type}}, length = {{ tasks[task_type]|length}}")
