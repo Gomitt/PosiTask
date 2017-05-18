@@ -1,7 +1,7 @@
 # import geocoder?
 import time
 import json
-# inOutOnline
+
 IN, OUT, EVERYWHERE = range(3)
 
 
@@ -70,6 +70,9 @@ class Task:
         self.del_counter += 1
 
     def check_criteria(self, in_out_everywhere, task_type):
-        return (not in_out_everywhere or (self.in_out_everywhere == in_out_everywhere)) and \
+        return (not in_out_everywhere or
+                (in_out_everywhere == EVERYWHERE) or
+                (self.in_out_everywhere == EVERYWHERE) or
+                (self.in_out_everywhere == in_out_everywhere)) and \
                (not task_type or self.task_type == task_type)
 
