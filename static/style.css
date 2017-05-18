@@ -19,16 +19,43 @@
     padding-right: 5px !important;
     margin: 0px !important;
     border: 0px !important;
+    box-shadow: none !important;
 }
 
 .panel-heading {
     height: 80px !important;
+    position: relative;
+    box-shadow: none !important;
+}
+
+.align_top {
+    position: absolute;
+    top: 20%;
+}
+
+.align_bottom {
+    position: absolute;
+    bottom: 25%;
+}
+
+.align_right {
+    top: 30%;
+    position: absolute;
+    right: 2%;
+    text-align: center;
 }
 
 
 .panel-body {
     border-top: 0px !important;
+    box-shadow: none !important;
 }
+
+.panel-footer {
+    border: 0px !important;
+    box-shadow: none !important;
+}
+
 
 .carrousel-inner {
     border: 0px !important;
