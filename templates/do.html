@@ -1,26 +1,31 @@
 {% extends "bootstrap/base.html" %}
+{% block styles %}
+	{{super()}}
+	<link rel="stylesheet" href="{{url_for('.static', filename='do.style.css')}}">
+{% endblock %}
+
 {% block scripts %}
 	{{super()}}
 	<script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.mobile.custom.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 	<script>
-		var timeEnum = '1w';
+		var timeEnum = "{{ task.duration }}";
 		var timeSec = 0;
 		var interval = 0;
 		switch (timeEnum){
-			case '1m':
-				timeSec = 60;
-				break;
-			case '10m':
+			case '10 mins':
 				timeSec = 60 * 10;
 				break;
-			case '3hr':
-				timeSec = 60 * 60 * 3;
+			case '30 mins':
+				timeSec = 60 * 30;
 				break;
-			case '1d':
+			case '1hr':
+				timeSec = 60 * 60;
+				break;
+			case 'few hours':
 				timeSec = 60 * 60 * 24;
 				break;
-			case '1w':
+			case 'few days':
 				timeSec = 60 * 60 * 24 * 7;
 				break
 		}
@@ -43,13 +48,13 @@
 			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-			document.getElementById("timeLbl").innerHTML = days + "d " + hours + ":"
+			document.getElementById("clock").innerHTML = days + "d " + hours + ":"
 					+ minutes + ":" + seconds;
 
 			// If the count down is finished, write some text
 			if (distance < 0) {
 				clearInterval(x);
-				document.getElementById("timeLbl").innerHTML = "Done :)";
+				document.getElementById("clock").innerHTML = "Done :)";
 			}
 		}, interval);
 	</script>
@@ -60,15 +65,49 @@
 
 {% block content %}
 	<div class="text-center">
-		<h1 id="title">{{ task.title }}</h1>
+		<div class="task-title" id="title">{{ task.title }}</div>
 		<div id="description"> {{ task.description }}</div>
-		<h2 id="timeLbl"></h2>
-		<form name = "finish" id="finishForm" action="/" method = "GET">
+		<div id="clock-container" class="container-fluid">
+		  <div class="row board-container">
+			<div id="clock" class="board clock-text">time</div>
+		  </div>
+		</div>
+
+		<div class="row text-center">
+		  <span class="do-label">TYPE</span>
+		  <span class="do-value">{{ task.task_type.upper() }}</span>
+		</div>
+		<div class="row text-center">
+		  <span class="do-label">POINTS</span>
+		  <span class="do-value">{{ task.value }}</span>
+		</div>
+
+		<div class="row text-center">
+		  <span class="do-label">DONE BY</span>
+		  <span class="do-value">{{ 145 }} PEOPLE</span>
+		</div>
+
+		<div class="row text-center">
+		  <span class="do-label">WHERE</span>
+		  <span class="do-value">{{ task.in_out_everywhere.upper() }}</span>
+		</div>
+
+		<div class="row text-center">
+		  <span class="do-label">DURATION</span>
+		  <span class="do-value">{{ task.duration }}</span>
+		</div>
+
+		<div class="row text-center">
+		  <span class="do-label">BEING DONE BY</span>
+		  <span class="do-value">{{ 23 }} PEOPLE</span>
+		</div>
+
+		<form name="finish" id="finishForm" action="/" method = "GET">
 			<div class="row text-center">
 				<button id="abortBtn" class="btn btn-danger" type="submit"> Abort </button>
 				<button id="doneBtn" class="btn btn-success" type="submit"> Done </button>
 			</div>
 		</form>
-	</div>
+	</div >
 
 {% endblock %}
