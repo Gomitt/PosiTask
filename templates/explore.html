@@ -12,53 +12,57 @@
 	<script>
 		$(document).ready(function() {
 			var task_htmls = {}
-			var new_task_html = '<div class="item">\
-				<div class="panel-group">\
-					<div class="DARKBLUEBOX panel panel-default">\
-						<div class="DARKBLUEBOX panel-heading">\
-							<h4 class="NormalCharacterStyle4 panel-title">\
-								<a data-toggle="collapse" href="#collapse_1_end">Create a task!</a>\
-							</h4>\
-						</div>\
-						<div id="collapse_1_end" class="panel-collapse collapse">\
-							<div class="BLUEBOX panel-body">Create a new task for others to enjoy</div>\
-							<div class="DARKBLUEBOX panel-footer">This task is worth 50 shmekels</div>\
-						</div>\
-					</div>\
-				</div>\
-			</div>'
-			var carousel_content = ""
-			
+			var panel_heading_styles = ["DARKBLUEBOX"]
+			var panel_title_styles = ["NormalCharacterStyle4"]
+			var panel_body_styles = ["BLUEBOX"]
+			var panel_footer_styles = ["DARKBLUEBOX"]
+			var panel_index = 0
 			{% for task_type in tasks %}
-				task_htmls["{{ task_type }}"] = []
-				{% for task in tasks[task_type] %}
-					task_htmls["{{task_type}}"].push('<div class="item">\
-							<div class="panel-group">\
-								<div class="DARKBLUEBOX panel panel-default">\
-									<div class="DARKBLUEBOX panel-heading">\
-										<h4 class="NormalCharacterStyle4 panel-title">\
-											<a data-toggle="collapse" href="#collapse_1_{{loop.index0}}">{{ task["title"] }}</a>\
-										</h4>\
-									</div>\
-									<div id="collapse_1_{{loop.index0}}" class="panel-collapse collapse">\
-										<div class="BLUEBOX panel-body">{{ task["description"] }}</div>\
-										<div class="DARKBLUEBOX panel-footer">This task is worth {{ task["value"] }} shmekels</div>\
-									</div>\
+				{
+					var carousel_content = ""
+					var new_task_html = '<div class="item" id="create_{{task_type}}">\
+						<div class="panel-group">\
+							<div class="' + panel_heading_styles + ' panel panel-default">\
+								<div class="' + panel_heading_styles + ' panel-heading">\
+									<h4 class="' + panel_title_styles + ' panel-title">\
+										<a data-toggle="collapse" href="#collapse_1_end">Create a task!</a>\
+									</h4>\
+								</div>\
+								<div id="collapse_1_end" class="panel-collapse collapse">\
+									<div class="' + panel_body_styles + ' panel-body">Create a new task for others to enjoy</div>\
+									<div class="' + panel_footer_styles + ' panel-footer">This task is worth 50 shmekels</div>\
 								</div>\
 							</div>\
-						</div>')
-				{% endfor %}
-				carousel_content = '<div id="{{task_type}}Carousel" class="carousel slide" data-interval="">\
-										<div class="carousel-inner">'
-				for (i = 0; i < task_htmls["{{task_type}}"].length; i++) {
-					carousel_content += task_htmls["{{task_type}}"][i];
-				}
-				carousel_content += new_task_html + '</div></div>'
-				$(".container").html(carousel_content)
-				$(".container").find(".carousel").find(".carousel-inner").find(".item").first().addClass('active');
-				
-				
-				{
+						</div>\
+					</div>'
+					task_htmls["{{ task_type }}"] = []
+					{% for task in tasks[task_type] %}
+						task_htmls["{{task_type}}"].push('<div class="item" id="task_{{task.task_id}}">\
+								<div class="panel-group">\
+									<div class="' + panel_heading_styles + ' panel panel-default">\
+										<div class="' + panel_heading_styles + ' panel-heading">\
+											<h4 class="' + panel_title_styles + ' panel-title">\
+												<a data-toggle="collapse" href="#collapse_1_{{loop.index0}}">{{ task["title"] }}</a>\
+											</h4>\
+										</div>\
+										<div id="collapse_1_{{loop.index0}}" class="panel-collapse collapse">\
+											<div class="' + panel_body_styles + ' panel-body">{{ task["description"] }}</div>\
+											<div class="' + panel_footer_styles + ' panel-footer">This task is worth {{ task["value"] }} shmekels</div>\
+										</div>\
+									</div>\
+								</div>\
+							</div>')
+					{% endfor %}
+					carousel_content = '<div id="{{task_type}}Carousel" class="carousel slide" data-interval="">\
+											<div class="carousel-inner">'
+					for (i = 0; i < task_htmls["{{task_type}}"].length; i++) {
+						carousel_content += task_htmls["{{task_type}}"][i];
+					}
+					carousel_content += new_task_html + '</div></div>'
+					$(".container").html(carousel_content)
+					$(".container").find(".carousel").find(".carousel-inner").find(".item").first().addClass('active');
+					
+					
 					var ended = false
 					$("#{{task_type}}Carousel").on("slid.bs.carousel", function (evt) {
 						console.debug("slide transition ended")
@@ -72,11 +76,14 @@
 							ended = true
 						}
 					})
+					panel_index += 1;
 				}
 			{% endfor %}
 			
 			$(".carousel-inner").swiperight(function() {
-				//$(this).parent().carousel('prev');
+				var task_id = $(this).find(".active").attr('id').replace("task_", "")
+				var addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id)
+				window.location.replace(addr);
 			});
 			$(".carousel-inner").swipeleft(function() {
 				$(this).parent().carousel('next');
