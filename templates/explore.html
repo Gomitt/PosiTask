@@ -91,7 +91,7 @@
 				var task_id = $(this).find(".active").attr('id')
 				var addr;
 				if (task_id.replace("task_", "") != task_id) {
-					addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id)
+					addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id.replace("task_", ""))
 				} else {
 					addr = "{{url_for('create')}}"
 				}
