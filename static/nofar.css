@@ -118,9 +118,9 @@
 {
   font-family : Futura;
   font-weight : bold;
-  font-size : 45px;
-  line-height : 55.2px;
-  letter-spacing : 1.8px;
+  font-size : 22.5px;
+  line-height : 27.6px;
+  letter-spacing : 0.9px;
   color : #FFFFFF !important;
   color : rgb(255, 255, 255) !important;
 }
@@ -156,7 +156,7 @@
 {
   font-family : Futura;
   font-weight : bold;
-  font-size : 40px;
+  font-size : 22.5px;
   color : #B2B2B1 !important;
   color : rgb(178, 178, 177) !important;
 }
@@ -198,7 +198,7 @@
 {
   font-family : Futura;
   font-weight : bold;
-  font-size : 40px;
+  font-size : 22.5px;
   color : #7A7A7A !important;
   color : rgb(122, 122, 122) !important;
 }
