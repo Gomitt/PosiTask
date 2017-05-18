@@ -33,7 +33,7 @@ tasks_json = {
 def main(param='hike'):
     filename = 'db/db1.pickle'
     db = TaskDB(filename)
-    return render_template('explore.html', tasks = db.get_tasks(words = "", creator = "", in_out_online = "", task_type = "", location = "", value = "", num_of_tasks = 5))
+    return render_template('explore.html', tasks = db.get_tasks(in_out_online = "", task_type = "", num_of_tasks = 5))
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():

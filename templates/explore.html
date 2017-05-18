@@ -45,12 +45,12 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" href="#collapse{{loop.index}}">{{ task.caption }}</a>
+										<a data-toggle="collapse" href="#collapse{{loop.index}}">{{ task.title }}</a>
 									</h4>
 								</div>
 								<div id="collapse{{loop.index}}" class="panel-collapse collapse">
 									<div class="panel-body">{{ task.description }}</div>
-									<div class="panel-footer">This task is worth {{ task.points }} shmekels</div>
+									<div class="panel-footer">This task is worth {{ task.value }} shmekels</div>
 								</div>
 							</div>
 						</div>

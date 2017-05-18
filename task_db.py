@@ -10,6 +10,7 @@ class TaskDB:
 
     def __init__(self, filename = ''):
         if filename:
+            self.filename = filename
             db_dict = pickle.load(open( filename, "rb" ) )
             self.tasks = db_dict['tasks']
             self.counter = db_dict['counter']
@@ -25,6 +26,7 @@ class TaskDB:
         self.tasks.append(Task(task_id=self.counter + 1, title=title, desc=desc, creator= creator,
                                in_out_online=in_out_online, task_type=task_type, location=location, value=value))
         self.counter += 1
+        self.save(self.filename)
 
     def get_tasks(self, in_out_online, task_type, num_of_tasks):
         return_list = [t for t in self.tasks if t.check_criteria(in_out_online=in_out_online, task_type=task_type)]
