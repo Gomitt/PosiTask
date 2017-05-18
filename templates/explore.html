@@ -47,16 +47,18 @@
 								<div class="panel-group">\
 									<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
 										<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
-											<h4 class="align_top panel-title">\
-												<a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">' + '{{ task["title"] }}'.toUpperCase() + '</a>\
-											</h4>\
 											<h4 class="align_right panel-title">\
 												<div class="' + panel_value_styles[task_type_index]+ '">' + {{ task["value"] }} + '</div>\
 												<div class="' + panel_value_styles[task_type_index]+ '_small">Shmekels</div>\
 											</h4>\
-											<h4 class="align_bottom  panel-title">\
-												<div class="' + task_title_styles[task_type_index] + '">' + '{{task_type}}'.toUpperCase() + '</div>\
-											</h4>\
+											<div class="table_crap">\
+												<h4 class="align_top panel-title">\
+													<a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">' + '{{ task["title"] }}'.toUpperCase() + '</a>\
+												</h4>\
+												<h4 class="align_bottom panel-title">\
+													<div class="' + task_title_styles[task_type_index] + '">' + '{{task_type}}'.toUpperCase() + '</div>\
+												</h4>\
+											</div>\
 										</div>\
 										<div id="collapse_' + task_type_index + '_{{loop.index0}}" class="panel-collapse collapse">\
 											<div class="' + panel_body_styles[task_type_index] + ' panel-body">{{ task["description"] }}</div>\
