@@ -1,20 +1,20 @@
-{% extends "bootstrap/base.html" %} 
+{% extends "bootstrap/base.html" %}
 {% block styles %}
 {{super()}}
 <link rel="stylesheet" href="{{url_for('.static', filename='style.css')}}">
 {% endblock %}
 
-{% block scripts %} 
+{% block scripts %}
 	{{super()}}
 	<script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.mobile.custom.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-	<script>  
+	<script>
 		$(document).ready(function() {
-			$(".carousel-inner").swiperight(function() {  
-				$(this).parent().carousel('prev');  
+			$(".carousel-inner").swiperight(function() {
+				$(this).parent().carousel('prev');
 			});
-			$(".carousel-inner").swipeleft(function() {  
-				$(this).parent().carousel('next');  
+			$(".carousel-inner").swipeleft(function() {
+				$(this).parent().carousel('next');
 			});
 			$("#do").click(function() {
 				window.location.replace("{{url_for('do')}}");
@@ -24,18 +24,10 @@
 			});
 		});
 	</script>
-{% endblock %} 
+{% endblock %}
 {% block title %}
-	This is an example page
-{% endblock %} 
-{% block navbar %}
-	<div class="navbar">
-		<ul class="nav nav-pills">
-			<li role="presentation" class="active"><a href="{{url_for('do')}}">Do</a></li>
-			<li role="presentation"><a href="{{url_for('create')}}">Create</a></li>
-		</ul>
-	</div>
-{% endblock %} 
+	Positask - Happiness, one task at a time
+{% endblock %}
 
 {% block content %}
 	<div class="container">

@@ -7,7 +7,7 @@ Bootstrap(app)
 @app.route('/')
 @app.route('/<param>')
 def main(param='hike'):
-    return render_template('app.html', param = positize(param))
+    return render_template('explore.html', param = positize(param))
 
 @app.route('/create')
 def create():
