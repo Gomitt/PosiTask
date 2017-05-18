@@ -87,6 +87,7 @@
 			{% endfor %}
 			
 			$(".carousel-inner").swiperight(function() {
+				$(this).parent().carousel('prev');
 				var task_id = $(this).find(".active").attr('id').replace("task_", "")
 				var addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id)
 				window.location.replace(addr);
