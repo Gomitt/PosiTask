@@ -8,3 +8,11 @@
 .nav-tabs, .nav-pills {
     text-align:center;
 }
+
+.input-group {
+    margin-top:5px;
+}
+
+.btn-group {
+    margin-top:5px;
+}
