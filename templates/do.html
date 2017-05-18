@@ -16,15 +16,9 @@
 {% endblock %} 
 {% block title %}
   Do a task
-{% endblock %} 
-{% block navbar %}
-  <div class="navbar">
-    <button type="button" class="btn btn-primary navbar-btn" id="do">Do</button>
-    <button type="button" class="btn btn-primary navbar-btn" id="create">Create</button>
-  </div>
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
-  <h1>Do a task</h1>
+	<h1>{{ task.get_title() }}</h1>
   
 {% endblock %}
