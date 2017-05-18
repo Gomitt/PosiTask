@@ -12,71 +12,76 @@
 	<script>
 		$(document).ready(function() {
 			var task_htmls = {}
-			var panel_heading_styles = ["DARKBLUEBOX"]
-			var panel_title_styles = ["NormalCharacterStyle4"]
-			var panel_body_styles = ["BLUEBOX"]
-			var panel_footer_styles = ["DARKBLUEBOX"]
-			var panel_index = 0
+			var panel_heading_styles = ["DARKBLUEBOX", "DARKBLUEBOX", "DARKBLUEBOX", "DARKBLUEBOX", "DARKBLUEBOX"]
+			var panel_title_styles = ["NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4"]
+			var panel_body_styles = ["BLUEBOX", "BLUEBOX", "BLUEBOX", "BLUEBOX", "BLUEBOX"]
+			var panel_footer_styles = ["DARKBLUEBOX", "DARKBLUEBOX", "DARKBLUEBOX", "DARKBLUEBOX", "DARKBLUEBOX"]
+			var task_type_index = 0
 			{% for task_type in tasks %}
 				{
 					var carousel_content = ""
 					var new_task_html = '<div class="item" id="create_{{task_type}}">\
 						<div class="panel-group">\
-							<div class="' + panel_heading_styles + ' panel panel-default">\
-								<div class="' + panel_heading_styles + ' panel-heading">\
-									<h4 class="' + panel_title_styles + ' panel-title">\
+							<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
+								<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
+									<h4 class="' + panel_title_styles[task_type_index] + ' panel-title">\
 										<a data-toggle="collapse" href="#collapse_1_end">Create a task!</a>\
 									</h4>\
 								</div>\
 								<div id="collapse_1_end" class="panel-collapse collapse">\
-									<div class="' + panel_body_styles + ' panel-body">Create a new task for others to enjoy</div>\
-									<div class="' + panel_footer_styles + ' panel-footer">This task is worth 50 shmekels</div>\
+									<div class="' + panel_body_styles[task_type_index] + ' panel-body">Create a new task for others to enjoy</div>\
+									<div class="' + panel_footer_styles[task_type_index] + ' panel-footer">This task is worth 50 shmekels</div>\
 								</div>\
 							</div>\
 						</div>\
 					</div>'
-					task_htmls["{{ task_type }}"] = []
+					task_htmls["{{task_type}}"] = []
 					{% for task in tasks[task_type] %}
 						task_htmls["{{task_type}}"].push('<div class="item" id="task_{{task.task_id}}">\
 								<div class="panel-group">\
-									<div class="' + panel_heading_styles + ' panel panel-default">\
-										<div class="' + panel_heading_styles + ' panel-heading">\
-											<h4 class="' + panel_title_styles + ' panel-title">\
-												<a data-toggle="collapse" href="#collapse_1_{{loop.index0}}">{{ task["title"] }}</a>\
+									<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
+										<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
+											<h4 class="' + panel_title_styles[task_type_index] + ' panel-title">\
+												<a data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">{{ task["title"] }}</a>\
 											</h4>\
 										</div>\
-										<div id="collapse_1_{{loop.index0}}" class="panel-collapse collapse">\
-											<div class="' + panel_body_styles + ' panel-body">{{ task["description"] }}</div>\
-											<div class="' + panel_footer_styles + ' panel-footer">This task is worth {{ task["value"] }} shmekels</div>\
+										<div id="collapse_' + task_type_index + '_{{loop.index0}}" class="panel-collapse collapse">\
+											<div class="' + panel_body_styles[task_type_index] + ' panel-body">{{ task["description"] }}</div>\
+											<div class="' + panel_footer_styles[task_type_index] + ' panel-footer">This task is worth {{ task["value"] }} shmekels</div>\
 										</div>\
 									</div>\
 								</div>\
 							</div>')
 					{% endfor %}
-					carousel_content = '<div id="{{task_type}}Carousel" class="carousel slide" data-interval="">\
+					carousel_content = '<div id="' + task_type_index + 'Carousel" class="carousel slide" data-interval="">\
 											<div class="carousel-inner">'
 					for (i = 0; i < task_htmls["{{task_type}}"].length; i++) {
 						carousel_content += task_htmls["{{task_type}}"][i];
 					}
 					carousel_content += new_task_html + '</div></div>'
-					$(".container").html(carousel_content)
-					$(".container").find(".carousel").find(".carousel-inner").find(".item").first().addClass('active');
-					
-					
-					var ended = false
-					$("#{{task_type}}Carousel").on("slid.bs.carousel", function (evt) {
+					$(".container").html($(".container").html() + carousel_content)
+					$("#" + task_type_index + "Carousel").find(".carousel-inner").find(".item").first().addClass('active');
+					task_type_index += 1;
+				}
+			{% endfor %}
+			task_type_index = 0
+			var ended = {}
+			{% for task_type in tasks %}
+				{
+					ended["{{task_type}}"] = false
+					$("#" + task_type_index + "Carousel").on("slid.bs.carousel", function (evt) {
 						console.debug("slide transition ended")
 						//console.debug("current slide = ", $(this).find(".active").index())
 						console.debug("next slide = ", $(evt.relatedTarget).index() )
 						console.debug("length = ", task_htmls["{{task_type}}"].length )
-						if ($(evt.relatedTarget).index() == task_htmls["{{task_type}}"].length && !ended) {
+						if ($(evt.relatedTarget).index() == task_htmls["{{task_type}}"].length && !ended["{{task_type}}"]) {
 							console.debug("ended")
 							$(this).find(".carousel-inner").html(new_task_html + new_task_html)
 							$(this).find(".carousel-inner").find(".item").first().addClass('active');
-							ended = true
+							ended["{{task_type}}"] = true
 						}
 					})
-					panel_index += 1;
+					task_type_index += 1;
 				}
 			{% endfor %}
 			
