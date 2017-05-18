@@ -23,8 +23,8 @@
 }
 .DARKBLUEBOX
 {
-  background : #4473A5;
-  background : rgba(68, 115, 165, 1);
+  background : #4473A5 !important;
+  background : rgba(68, 115, 165, 1) !important;
   box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
   filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
 }
@@ -65,36 +65,36 @@
 }
 .BLUEBOX
 {
-  background : #97D2E6;
-  background : rgba(151, 210, 230, 1);
+  background-color : #97D2E6 !important;
+  background-color : rgba(151, 210, 230, 1) !important;
   box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
   filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
 }
 .WHITEBOXUP
 {
-  background : #FFFFFF;
-  background : rgba(255, 255, 255, 1);
+  background : #FFFFFF !important;
+  background : rgba(255, 255, 255, 1) !important;
   box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
   filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
 }
 .WHITEBOX2
 {
-  background : #FFFFFF;
-  background : rgba(255, 255, 255, 1);
+  background : #FFFFFF !important;
+  background : rgba(255, 255, 255, 1) !important;
   box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
   filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
 }
 .GREENBOX
 {
-  background : #81C497;
-  background : rgba(129, 196, 151, 1);
+  background : #81C497 !important;
+  background : rgba(129, 196, 151, 1) !important;
   box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
   filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
 }
 .YELLOWBOX
 {
-  background : #FCE277;
-  background : rgba(252, 226, 119, 1);
+  background : #FCE277 !important;
+  background : rgba(252, 226, 119, 1) !important;
   box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
   filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
 }
@@ -111,8 +111,8 @@
   font-size : 47px;
   line-height : 85.19px;
   letter-spacing : 1.88px;
-  color : #FFFFFF;
-  color : rgb(255, 255, 255);
+  color : #FFFFFF !important;
+  color : rgb(255, 255, 255) !important;
 }
 .NormalCharacterStyle4
 {
@@ -121,16 +121,16 @@
   font-size : 45px;
   line-height : 55.2px;
   letter-spacing : 1.8px;
-  color : #FFFFFF;
-  color : rgb(255, 255, 255);
+  color : #FFFFFF !important;
+  color : rgb(255, 255, 255) !important;
 }
 .NormalCharacterStyle2
 {
   font-family : Futura;
   font-weight : bold;
   font-size : 40px;
-  color : #EB6559;
-  color : rgb(235, 101, 89);
+  color : #EB6559 !important;
+  color : rgb(235, 101, 89) !important;
 }
 .NormalCharacterStyle10
 {
@@ -139,8 +139,8 @@
   font-size : 72px;
   line-height : 81.2px;
   letter-spacing : 2.88px;
-  color : #FFFFFF;
-  color : rgb(255, 255, 255);
+  color : #FFFFFF !important;
+  color : rgb(255, 255, 255) !important;
 }
 .NormalCharacterStyle6
 {
@@ -149,16 +149,16 @@
   font-size : 47px;
   line-height : 49.2px;
   letter-spacing : 1.88px;
-  color : #FFFFFF;
-  color : rgb(255, 255, 255);
+  color : #FFFFFF !important;
+  color : rgb(255, 255, 255) !important;
 }
 .NormalCharacterStyle7
 {
   font-family : Futura;
   font-weight : bold;
   font-size : 40px;
-  color : #B2B2B1;
-  color : rgb(178, 178, 177);
+  color : #B2B2B1 !important;
+  color : rgb(178, 178, 177) !important;
 }
 .NormalCharacterStyle12
 {
@@ -167,40 +167,40 @@
   font-size : 72px;
   line-height : 81.2px;
   letter-spacing : 2.88px;
-  color : #FFFFFF;
-  color : rgb(255, 255, 255);
+  color : #FFFFFF !important;
+  color : rgb(255, 255, 255) !important;
 }
 .NormalCharacterStyle1
 {
   font-family : Futura;
   font-weight : bold;
   font-size : 40px;
-  color : #EB6559;
-  color : rgb(235, 101, 89);
+  color : #EB6559 !important;
+  color : rgb(235, 101, 89) !important;
 }
 .NormalCharacterStyle
 {
   font-family : Futura;
   font-weight : bold;
   font-size : 40px;
-  color : #EB6559;
-  color : rgb(235, 101, 89);
+  color : #EB6559 !important;
+  color : rgb(235, 101, 89) !important;
 }
 .NormalCharacterStyle9
 {
   font-family : Futura;
   font-weight : bold;
   font-size : 40px;
-  color : #8C8C8B;
-  color : rgb(140, 140, 139);
+  color : #8C8C8B !important;
+  color : rgb(140, 140, 139) !important;
 }
 .NormalCharacterStyle8
 {
   font-family : Futura;
   font-weight : bold;
   font-size : 40px;
-  color : #7A7A7A;
-  color : rgb(122, 122, 122);
+  color : #7A7A7A !important;
+  color : rgb(122, 122, 122) !important;
 }
 .NormalCharacterStyle11
 {
@@ -209,14 +209,14 @@
   font-size : 72px;
   line-height : 81.2px;
   letter-spacing : 2.88px;
-  color : #FFFFFF;
-  color : rgb(255, 255, 255);
+  color : #FFFFFF !important;
+  color : rgb(255, 255, 255) !important;
 }
 .NormalCharacterStyle3
 {
   font-family : Futura;
   font-weight : bold;
   font-size : 65px;
-  color : #EB6559;
-  color : rgb(235, 101, 89);
+  color : #EB6559 !important;
+  color : rgb(235, 101, 89) !important;
 }
