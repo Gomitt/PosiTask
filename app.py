@@ -16,6 +16,7 @@ db = TaskDB(DB_FILENAME)
 @app.route('/')
 @nocache
 def main():
+    print(db.max_id)
     return render_template('explore.html', tasks=db.get_tasks_dict(), num_tasks=db.max_id)
 
 
