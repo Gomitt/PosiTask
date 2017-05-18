@@ -2,6 +2,9 @@ from flask import Flask, url_for, request, render_template, jsonify, flash, redi
 from flask_bootstrap import Bootstrap
 from task_db import TaskDB
 
+TASKS_TO_SERVE = 5
+
+db_filename = 'db/db1.pickle'
 app = Flask(__name__)
 app.secret_key = 'many random bytes'
 Bootstrap(app)
@@ -27,13 +30,13 @@ tasks_json = {
     ],
 }
 
+db = TaskDB(db_filename)
+tasks = db.get_tasks(in_out_online="", task_type="")
 
 @app.route('/')
 @app.route('/<param>')
 def main(param='hike'):
-    filename = 'db/db1.pickle'
-    db = TaskDB(filename)
-    return render_template('explore.html', tasks = db.get_tasks(in_out_online = "", task_type = "", num_of_tasks = 5))
+    return render_template('explore.html', tasks=tasks[:TASKS_TO_SERVE])
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
