@@ -30,6 +30,11 @@
 {% endblock %}
 
 {% block content %}
+
+    {% for message in get_flashed_messages() %}
+        <div class=flash>{{ message }}</div>
+    {% endfor %}
+
 	<div class="container">
 		{% for task in tasks %}
 			<div id="taskCarousel{{loop.index}}" class="carousel slide" data-interval="">
