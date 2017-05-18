@@ -9,10 +9,7 @@
     text-align:center;
 }
 
-.input-group {
-    margin-top:5px;
-}
+.row {
+    margin: 5px;
 
-.btn-group {
-    margin-top:5px;
 }
