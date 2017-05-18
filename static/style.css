@@ -15,10 +15,24 @@
 }
 
 .panel-group {
-    margin-bottom: 20px;
-    padding: 20px;
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    margin: 0px !important;
+    border: 0px !important;
 }
 
 .panel-body {
     border-top: 0px !important;
+}
+
+.carrousel-inner {
+    border: 0px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.carrousel-inner.item {
+    border: 0px !important;
+    padding: 0px !important;
+    margin: 0px !important;
 }

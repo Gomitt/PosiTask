@@ -36,8 +36,8 @@
 }
 .PINKBOX
 {
-  background : #EEADA9;
-  background : rgba(238, 173, 169, 1);
+  background : #EEADA9 !important;
+  background : rgba(238, 173, 169, 1) !important;
   box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
   filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
 }
