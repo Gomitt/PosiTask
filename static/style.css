@@ -21,6 +21,11 @@
     border: 0px !important;
 }
 
+.panel-heading {
+    height: 80px !important;
+}
+
+
 .panel-body {
     border-top: 0px !important;
 }

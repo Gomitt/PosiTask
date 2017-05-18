@@ -15,9 +15,11 @@
 			var new_task_htmls = {}
 			var panel_heading_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var panel_title_styles = ["NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4"]
+			var task_title_styles = ["NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8"]
 			var panel_body_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var panel_footer_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var task_type_index = 0
+			$("#creation-alert").fadeOut(2000);
 			{% for task_type in tasks %}
 				{
 					var carousel_content = ""
@@ -44,6 +46,9 @@
 										<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
 											<h4 class="panel-title">\
 												<a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">{{ task["title"] }}</a>\
+											</h4>\
+											<h4 class="panel-title">\
+												<div class="' + task_title_styles[task_type_index] + '">{{ task_type }}</div>\
 											</h4>\
 										</div>\
 										<div id="collapse_' + task_type_index + '_{{loop.index0}}" class="panel-collapse collapse">\
@@ -88,8 +93,13 @@
 			
 			$(".carousel-inner").swiperight(function() {
 				$(this).parent().carousel('prev');
-				var task_id = $(this).find(".active").attr('id').replace("task_", "")
-				var addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id)
+				var task_id = $(this).find(".active").attr('id')
+				var addr;
+				if (task_id.replace("task_", "") != task_id) {
+					addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id.replace("task_", ""))
+				} else {
+					addr = "{{url_for('create')}}"
+				}
 				window.location.href = addr;
 			});
 			$(".carousel-inner").swipeleft(function() {
@@ -111,7 +121,9 @@
 {% block content %}
 
     {% for message in get_flashed_messages() %}
-        <div class=flash>{{ message }}</div>
+		<div id="creation-alert" class="alert alert-success">
+		  <strong>{{ message }}</strong>
+		</div>
     {% endfor %}
 
 	<div class="container">

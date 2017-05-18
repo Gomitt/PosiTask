@@ -40,7 +40,7 @@ def create():
 
 @app.route('/do/<task_id>')
 def do(task_id=None):
-    task = db.get_by_id(task_id)
+    task = db.get_by_id(int(task_id))
     print(task)
     return render_template('do.html', task=task)
 
