@@ -88,8 +88,13 @@
 			
 			$(".carousel-inner").swiperight(function() {
 				$(this).parent().carousel('prev');
-				var task_id = $(this).find(".active").attr('id').replace("task_", "")
-				var addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id)
+				var task_id = $(this).find(".active").attr('id')
+				var addr;
+				if (task_id.replace("task_", "") != task_id) {
+					addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id)
+				} else {
+					addr = "{{url_for('create')}}"
+				}
 				window.location.href = addr;
 			});
 			$(".carousel-inner").swipeleft(function() {
