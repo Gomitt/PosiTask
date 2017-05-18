@@ -13,19 +13,19 @@ Bootstrap(app)
 tasks_json = {
     "tasks" : [
         {
-            "caption" : "Go fly a kite",
+            "title" : "Go fly a kite",
             "description" : "Go outside and fly the biggest kite you can find",
-            "points" : 25,
+            "value" : 25,
         },
         {
-            "caption" : "Go fly another kite",
+            "title" : "Go fly another kite",
             "description" : "Go outside and fly the second biggest kite you can find",
-            "points" : 30,
+            "value" : 30,
         },
         {
-            "caption" : "Go fly a third kite",
+            "title" : "Go fly a third kite",
             "description" : "Go outside and fly the third biggest kite you can find",
-            "points" : 35,
+            "value" : 35,
         },
     ],
 }
@@ -36,7 +36,9 @@ tasks = db.get_tasks(in_out_online="", task_type="")
 @app.route('/')
 @app.route('/<param>')
 def main(param='hike'):
-    return render_template('explore.html', tasks=tasks[:TASKS_TO_SERVE])
+    filename = 'db/db1.pickle'
+    db = TaskDB(filename)
+    return render_template('explore.html', tasks = tasks_json)#db.get_tasks(in_out_online = "", task_type = "", num_of_tasks = 5))
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
