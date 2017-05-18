@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 {% block styles %}
 	{{super()}}
-	<link rel="stylesheet" href="{{url_for('.static', filename='style.css')}}">
+	<link rel="stylesheet" href="{{url_for('.static', filename='create.style.css')}}">
 {% endblock %}
 {% block scripts %} 
   {{super()}}
@@ -14,10 +14,9 @@
   Create a new task
 {% endblock %} 
 {% block content %}
-
 	<form name = "create" id="createForm" action="create" method = "POST">
 		<div class="row text-center">
-			<input type="text" class="form-control" placeholder="Title" name="title">
+			<input type="text" class="form-control label-font" placeholder="Title" name="title">
 		</div>
 
 		<div class="row text-center">
@@ -26,19 +25,19 @@
 
 		<div class="row text-center" data-toggle="buttons" name="duration">
 			Task duration:
-			<label class="btn btn-primary ">
+			<label class="btn ">
 				<input type="radio" name="duration" value="1m" id="opt-1m" autocomplete="off" checked> 1m
 			</label>
-			<label class="btn btn-primary active">
+			<label class="btn active">
 				<input type="radio" name="duration" value="10m" id="opt-10m" autocomplete="off" checked> 10m
 			</label>
-			<label class="btn btn-primary ">
+			<label class="btn ">
 				<input type="radio" name="duration" value="3hr" id="opt-3hr" autocomplete="off" checked> 3hr
 			</label>
-			<label class="btn btn-primary ">
+			<label class="btn ">
 				<input type="radio" name="duration" value="1d" id="opt-1d" autocomplete="off" checked> 1d
 			</label>
-			<label class="btn btn-primary ">
+			<label class="btn ">
 				<input type="radio" name="duration" value="1w" id="opt-1w" autocomplete="off" checked> 1w
 			</label>
 		</div>
@@ -54,19 +53,19 @@
 		</div>
 
 		<div class="row text-center" data-toggle="buttons" name="in_out_everywhere">
-			<label class="btn btn-primary active">
+			<label class="btn active">
 				<input type="radio" name="in_out_everywhere" value="indoor" id="opt-indoor" autocomplete="off" checked> Indoor
 			</label>
-			<label class="btn btn-primary">
-				<input type="radio" name="in_out_everywhere" value="outdoor" id="opt-outdoor" autocomplete="off"> Outdoor
+			<label class="btn ">
+				<input type="radio" name="location" value="outdoor" id="opt-outdoor" autocomplete="off"> Outdoor
 			</label>
-			<label class="btn btn-primary">
-				<input type="radio" name="in_out_everywhere" value="everywhere" id="opt-outdoor" autocomplete="off"> Everywhere
+			<label class="btn ">
+				<input type="radio" name="location" value="everywhere" id="opt-outdoor" autocomplete="off"> Everywhere
 			</label>
 		</div>
 
 		<div class="row text-center">
-			<button id = "createBtn" class="btn btn-success" type="submit">Create</button>
+			<button id = "createBtn" class="btn " type="submit">SHARE</button>
 		</div>
 	</form>
 
