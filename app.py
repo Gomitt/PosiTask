@@ -31,12 +31,10 @@ tasks_json = {
 }
 
 db = TaskDB(db_filename)
-tasks_dict = db.get_tasks_dict()
-
 
 @app.route('/')
 def main():
-    return render_template('explore.html', tasks=tasks_dict)
+    return render_template('explore.html', tasks=db.get_tasks_dict())
 
 
 @app.route('/create', methods=['GET', 'POST'])
@@ -44,6 +42,7 @@ def create():
     if request.method == 'GET':
         return render_template('create.html', types=db.task_types)
     else:
+        # insert task db.insert()
         flash('Task created!', category='info')
         return redirect(url_for('main'))
 

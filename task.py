@@ -13,7 +13,6 @@ class Task:
         self.creator = creator
         self.in_out_everywhere = in_out_everywhere  # in / out / everywhere
         self.task_type = task_type          # sport & body / be good / adventures / waste my time / culture
-
         self.location = location
         self.value = value
         self.creation_time = time.time()
