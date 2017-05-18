@@ -1,5 +1,5 @@
-from task import Task
-import time
+from task_db import TaskDB
 
-t = Task(title='hi', desc='bye', creator='sdf', in_out_online=0, task_type=1, location="dsfsadf", value=2)
-print(t.get_json())
+db = TaskDB()
+db.insert_task(title='hi', desc='bye', creator='sdf', in_out_online=0, task_type=1, location="dsfsadf", value=2)
+print()

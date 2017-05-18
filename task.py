@@ -6,8 +6,8 @@ IN, OUT, ONLINE = range(3)
 
 
 class Task:
-
-    def __init__(self, title, desc, creator, in_out_online, task_type, location, value=1):
+    def __init__(self, task_id, title, desc, creator, in_out_online, task_type, location, value=1):
+        self.task_id = task_id
         self.title = title
         self.description = desc
         self.creator = creator
@@ -23,6 +23,9 @@ class Task:
 
     def get_title(self):
         return self.title
+
+    def get_id(self):
+        return self.task_id
 
     def get_description(self):
         return self.description
@@ -66,6 +69,7 @@ class Task:
     def inc_del_count(self):
         self.del_counter += 1
 
-    def check_fit(self, words, creator, in_out_online, task_type, location, value):
-        return (self.creator == creator) and (self.in_out_online == in_out_online) and (self.task_type == task_type)
+    def check_criteria(self, in_out_online, task_type):
+        return (not in_out_online or self.in_out_online == in_out_online ) and \
+            (not task_type or self.task_type == task_type)
 

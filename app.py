@@ -1,5 +1,6 @@
 from flask import Flask, url_for, request, render_template, jsonify
 from flask_bootstrap import Bootstrap
+from task_db import TaskDB
 
 
 app = Flask(__name__)
@@ -11,11 +12,12 @@ class DummyTask:
     description = "Go outside and fly the biggest kite you can find"
     points = 25
 
-
 @app.route('/')
 @app.route('/<param>')
 def main(param='hike'):
-    return render_template('explore.html', tasks = [DummyTask] * 3)
+    filename = 'db/db1.pickle'
+    db = TaskDB(filename)
+    return render_template('explore.html', tasks = db.get_tasks(words = "", creator = "", in_out_online = "", task_type = "", location = "", value = "", num_of_tasks = 5))
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
