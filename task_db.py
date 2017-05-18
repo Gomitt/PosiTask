@@ -20,7 +20,7 @@ class TaskDB:
             self.max_id = 0
 
     def save(self, filename):
-        pickle.dump({'task_dict': self.tasks_dict, 'max_id': self.max_id}, open(filename, "wb"))
+        pickle.dump({'task_dict': self.tasks_dict, 'max_id': self.max_id}, open(filename, "wb"), protocol = 2)
 
     def insert_task(self, title, desc, creator, in_out_everywhere, task_type, location, duration, value):
         self.tasks_dict[task_type].append(Task(task_id=self.max_id + 1, title=title, desc=desc, creator=creator,
