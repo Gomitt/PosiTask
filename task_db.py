@@ -4,7 +4,6 @@ from task import Task
 IN, OUT, EVERYWHERE = "indoor", "outdoor", "everywhere"
 task_types = ['sport & body', 'be good', 'adventures', 'waste my time', 'culture']
 
-
 class TaskDB:
 
     task_types = task_types
