@@ -1,24 +1,74 @@
-{% extends "bootstrap/base.html" %} 
-{% block scripts %} 
-  {{super()}}
-  <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.mobile.custom.min.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-  <script>  
-    $(document).ready(function() {
-        $("#do").click(function() {
-            window.location.replace("{{url_for('do')}}");
-        });
-        $("#create").click(function() {
-            window.location.replace("{{url_for('create')}}");
-        });
-    });
-  </script>
+{% extends "bootstrap/base.html" %}
+{% block scripts %}
+	{{super()}}
+	<script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.mobile.custom.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+	<script>
+		var timeEnum = '10m';
+		var timeSec = 0;
+		var interval = 0;
+		switch (timeEnum){
+			case '1m':
+				timeSec = 60;
+				break;
+			case '10m':
+				timeSec = 60 * 10;
+				break;
+			case '3hr':
+				timeSec = 60 * 60 * 3;
+				break;
+			case '1d':
+				timeSec = 60 * 60 * 24;
+				break;
+			case '1w':
+				timeSec = 60 * 60 * 24 * 7;
+				break
+		}
+		var t = new Date();
+		t.setSeconds(t.getSeconds() + timeSec);
+		var countDownDate = t.getTime();
+
+		// Update the count down every 1 second
+		var x = setInterval(function() {
+			interval = 1000;
+			// Get todays date and time
+			var now = new Date().getTime();
+
+			// Find the distance between now an the count down date
+			var distance = countDownDate - now;
+
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			document.getElementById("timeLbl").innerHTML = days + "d " + hours + "h "
+					+ minutes + "m " + seconds + "s ";
+
+			// If the count down is finished, write some text
+			if (distance < 0) {
+				clearInterval(x);
+				document.getElementById("timeLbl").innerHTML = "Done :)";
+			}
+		}, interval);
+	</script>
 {% endblock %} 
 {% block title %}
   Do a task
 {% endblock %}
 
 {% block content %}
-	<h1>{{ task.get_title() }}</h1>
-  
+	<div class="text-center">
+		<h1 id="title">Go out and have fun!</h1>
+		<div id="description"> Get up, walk to the door, open, step forward, again, and then have fun.</div>
+		<h2 id="timeLbl"></h2>
+		<form name = "finish" id="finishForm" action="/" method = "GET">
+			<div class="row text-center">
+				<button id="abortBtn" class="btn btn-danger" type="submit"> Abort </button>
+				<button id="doneBtn" class="btn btn-success" type="submit"> Done </button>
+			</div>
+		</form>
+	</div>
+
 {% endblock %}
