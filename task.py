@@ -2,9 +2,6 @@
 import time
 import json
 
-IN, OUT, EVERYWHERE = range(3)
-
-
 class Task:
     def __init__(self, task_id, title, desc, creator, in_out_everywhere, task_type, location, duration, value=1):
         self.task_id = task_id
@@ -72,10 +69,4 @@ class Task:
     def inc_del_count(self):
         self.del_counter += 1
 
-    def check_criteria(self, in_out_everywhere, task_type):
-        return (not in_out_everywhere or
-                (in_out_everywhere == EVERYWHERE) or
-                (self.in_out_everywhere == EVERYWHERE) or
-                (self.in_out_everywhere == in_out_everywhere)) and \
-               (not task_type or self.task_type == task_type)
 

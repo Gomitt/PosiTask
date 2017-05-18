@@ -1,7 +1,7 @@
 import pickle
-
 from task import Task
-IN, OUT, ONLINE = range(3)
+
+IN, OUT, EVERYWHERE = "indoor", "outdoor", "everywhere"
 task_types = ['sport & body', 'be good', 'adventures', 'waste my time', 'culture']
 
 
