@@ -3,7 +3,7 @@ from flask_bootstrap import Bootstrap
 from task_db import TaskDB
 
 TASKS_TO_SERVE = 5
-DB_FILENAME = 'db/db1.pickle'
+DB_FILENAME = 'db/dbshort.pickle'
 
 app = Flask(__name__)
 app.secret_key = 'many random bytes'
@@ -22,12 +22,22 @@ def create():
     if request.method == 'GET':
         return render_template('create.html', types=db.task_types)
     else:
-        for k,v in request.form.items():
-            print(k,v)
-        # title = request.form['title']
-        # db.insert_task()
+        title = request.form['title']
+        description = request.form['description']
+        task_type = request.form['task_type']
+        duration = request.form['duration']
+        in_out_everywhere = request.form['in_out_everywhere']
+        try:
+            db.insert_task(title=title, desc=description, creator='Motti The King', in_out_everywhere=in_out_everywhere,
+                           task_type=task_type, location='Jerusalem', duration=duration, value=1)
+        except:
+            flash('Task creation faild!', category='error')
+            return redirect(url_for('create'))
+
         flash('Task created!', category='info')
         return redirect(url_for('main'))
+
+
 
 
 @app.route('/do/<task_id>')
