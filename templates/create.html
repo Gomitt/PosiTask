@@ -22,15 +22,15 @@
   Create a new task
 {% endblock %} 
 {% block content %}
-	<div class="input-group">
+	<div class="row text-center">
 		<input type="text" class="form-control" placeholder="Title">
 	</div>
 	
-	<div class="input-group">
+	<div class="row text-center">
 	 <textarea class="form-control" rows="3"  placeholder="Description"></textarea>
 	</div>
 
-	<div class="input-group">
+	<div class="row text-center">
 			<select class="form-control">
 				{% for i in ['sport & body', 'posiTask', 'socializing', 'friendships and family', 'adventures',
 							  'waste my time', 'read and learn', 'be good', 'enviroment', 'music and art', 'kids']%}
@@ -39,20 +39,27 @@
 			</select>
 	</div>
 
-	<div class="btn-group" data-toggle="buttons">
+	<div class="row text-center" data-toggle="buttons">
 	  <label class="btn btn-primary active">
 		<input type="radio" name="options" id="opt-indoor" autocomplete="off" checked> Indoor
 	  </label>
 	  <label class="btn btn-primary">
 		<input type="radio" name="options" id="opt-outdoor" autocomplete="off"> Outdoor
 	  </label>
-	</div>
 
-	<div class="btn-group">
-		<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+	<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
 		  Online
 		</button>
 	</div>
+
+
+	<div class="row text-center">
+		<div class="btn-group">
+			<button type="button" class="btn btn-success">Create!</button>
+		</div>
+	</div>
+
+
 
 
 {% endblock %}
