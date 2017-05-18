@@ -118,8 +118,7 @@
 {
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 22.5px;
-  line-height : 27.6px;
+  font-size : 20px;
   letter-spacing : 0.9px;
   color : #FFFFFF !important;
   color : rgb(255, 255, 255) !important;
@@ -156,7 +155,7 @@
 {
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 22.5px;
+  font-size : 18x;
   color : #B2B2B1 !important;
   color : rgb(178, 178, 177) !important;
 }
@@ -198,7 +197,7 @@
 {
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 22.5px;
+  font-size : 18px;
   color : #7A7A7A !important;
   color : rgb(122, 122, 122) !important;
 }

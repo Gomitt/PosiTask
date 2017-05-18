@@ -15,7 +15,7 @@
 			var new_task_htmls = {}
 			var panel_heading_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var panel_title_styles = ["NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4"]
-			var task_title_styles = ["NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8"]
+			var task_title_styles = ["NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle7"]
 			var panel_body_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var panel_footer_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var task_type_index = 0
@@ -46,10 +46,10 @@
 								<div class="panel-group">\
 									<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
 										<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
-											<h4 class="panel-title">\
+											<h4 class="align_top panel-title">\
 												<a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">' + '{{ task["title"] }}'.toUpperCase() + '</a>\
 											</h4>\
-											<h4 class="panel-title">\
+											<h4 class="align_bottom  panel-title">\
 												<div class="' + task_title_styles[task_type_index] + '">' + '{{task_type}}'.toUpperCase() + '</div>\
 											</h4>\
 										</div>\
