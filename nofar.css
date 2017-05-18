@@ -1,0 +1,222 @@
+.x3C_GREYLine_x3E_
+{
+  border-style : Solid;
+  border-color : #A3A3A2;
+  border-color : rgba(163, 163, 162, 1);
+  border-width : 1px;
+  opacity : 0.39;
+  filter: alpha(opacity=39) progid:DXImageTransform.Microsoft.Alpha(opacity=39) ;
+}
+.x3C_GREYLine_x3E__1_
+{
+  border-style : Solid;
+  border-color : #A3A3A2;
+  border-color : rgba(163, 163, 162, 1);
+  border-width : 1px;
+  opacity : 0.39;
+  filter: alpha(opacity=39) progid:DXImageTransform.Microsoft.Alpha(opacity=39) ;
+}
+.RED_TRIANGLE2
+{
+  background : #EB6559;
+  background : rgba(235, 101, 89, 1);
+}
+.DARKBLUEBOX
+{
+  background : #4473A5;
+  background : rgba(68, 115, 165, 1);
+  box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
+}
+.image3
+{
+  background-image : url(image3.png);
+  /*To create image referenced in CSS, use \'Export Selected CSS\' command.*/
+  background-repeat : no-repeat;
+}
+.PINKBOX
+{
+  background : #EEADA9;
+  background : rgba(238, 173, 169, 1);
+  box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
+}
+.RED_TRIANGLE3
+{
+  background : #EB6559;
+  background : rgba(235, 101, 89, 1);
+}
+.RED_TRIANGLE
+{
+  background : #EB6559;
+  background : rgba(235, 101, 89, 1);
+}
+.image1
+{
+  background-image : url(image1.png);
+  /*To create image referenced in CSS, use \'Export Selected CSS\' command.*/
+  background-repeat : no-repeat;
+}
+.image
+{
+  background-image : url(image.png);
+  /*To create image referenced in CSS, use \'Export Selected CSS\' command.*/
+  background-repeat : no-repeat;
+}
+.BLUEBOX
+{
+  background : #97D2E6;
+  background : rgba(151, 210, 230, 1);
+  box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
+}
+.WHITEBOXUP
+{
+  background : #FFFFFF;
+  background : rgba(255, 255, 255, 1);
+  box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
+}
+.WHITEBOX2
+{
+  background : #FFFFFF;
+  background : rgba(255, 255, 255, 1);
+  box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
+}
+.GREENBOX
+{
+  background : #81C497;
+  background : rgba(129, 196, 151, 1);
+  box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
+}
+.YELLOWBOX
+{
+  background : #FCE277;
+  background : rgba(252, 226, 119, 1);
+  box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
+}
+.image2
+{
+  background-image : url(image2.png);
+  /*To create image referenced in CSS, use \'Export Selected CSS\' command.*/
+  background-repeat : no-repeat;
+}
+.NormalCharacterStyle5
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 47px;
+  line-height : 85.19px;
+  letter-spacing : 1.88px;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+}
+.NormalCharacterStyle4
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 45px;
+  line-height : 55.2px;
+  letter-spacing : 1.8px;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+}
+.NormalCharacterStyle2
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 40px;
+  color : #EB6559;
+  color : rgb(235, 101, 89);
+}
+.NormalCharacterStyle10
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 72px;
+  line-height : 81.2px;
+  letter-spacing : 2.88px;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+}
+.NormalCharacterStyle6
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 47px;
+  line-height : 49.2px;
+  letter-spacing : 1.88px;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+}
+.NormalCharacterStyle7
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 40px;
+  color : #B2B2B1;
+  color : rgb(178, 178, 177);
+}
+.NormalCharacterStyle12
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 72px;
+  line-height : 81.2px;
+  letter-spacing : 2.88px;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+}
+.NormalCharacterStyle1
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 40px;
+  color : #EB6559;
+  color : rgb(235, 101, 89);
+}
+.NormalCharacterStyle
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 40px;
+  color : #EB6559;
+  color : rgb(235, 101, 89);
+}
+.NormalCharacterStyle9
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 40px;
+  color : #8C8C8B;
+  color : rgb(140, 140, 139);
+}
+.NormalCharacterStyle8
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 40px;
+  color : #7A7A7A;
+  color : rgb(122, 122, 122);
+}
+.NormalCharacterStyle11
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 72px;
+  line-height : 81.2px;
+  letter-spacing : 2.88px;
+  color : #FFFFFF;
+  color : rgb(255, 255, 255);
+}
+.NormalCharacterStyle3
+{
+  font-family : Futura;
+  font-weight : bold;
+  font-size : 65px;
+  color : #EB6559;
+  color : rgb(235, 101, 89);
+}

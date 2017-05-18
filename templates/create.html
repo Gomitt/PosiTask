@@ -55,8 +55,7 @@
 
 		<div class="row text-center">
 			<select class="form-control" name="category">
-				{% for i in ['sport & body', 'posiTask', 'socializing', 'friendships and family', 'adventures',
-							  'waste my time', 'read and learn', 'be good', 'enviroment', 'music and art', 'kids']%}
+				{% for i in types %}
 				  <option>{{ i }}</option>
 				{% endfor %}
 			</select>
