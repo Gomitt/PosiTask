@@ -38,8 +38,6 @@ def create():
         return redirect(url_for('main'))
 
 
-
-
 @app.route('/do/<task_id>')
 def do(task_id=None):
     task = db.get_by_id(task_id)
