@@ -36,7 +36,7 @@ class TaskDB:
     def get_tasks_dict(self):
         res = defaultdict(list)
         for task in self.tasks:
-            res[task.get_type()].append(task.get_json())
+            res[task.get_type()].append(task)
         return dict(res)
 
     def get_tasks(self, in_out_online, task_type, num_of_tasks=None):
