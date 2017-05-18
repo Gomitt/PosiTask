@@ -2,16 +2,16 @@
 import time
 import json
 # inOutOnline
-IN, OUT, ONLINE = range(3)
+IN, OUT, EVERYWHERE = range(3)
 
 
 class Task:
-    def __init__(self, task_id, title, desc, creator, in_out_online, task_type, location, value=1):
+    def __init__(self, task_id, title, desc, creator, in_out_everywhere, task_type, location, value=1):
         self.task_id = task_id
         self.title = title
         self.description = desc
         self.creator = creator
-        self.in_out_online = in_out_online  # in / out / online
+        self.in_out_everywhere = in_out_everywhere  # in / out / everywhere
         self.task_type = task_type          # sport & body / be good / adventures / waste my time / culture
 
         self.location = location
@@ -33,8 +33,8 @@ class Task:
     def get_creator(self):
         return self.creator
 
-    def get_in_out_online(self):
-        return self.in_out_online
+    def get_in_out_everywhere(self):
+        return self.in_out_everywhere
 
     def get_type(self):
         return self.task_type
@@ -69,7 +69,7 @@ class Task:
     def inc_del_count(self):
         self.del_counter += 1
 
-    def check_criteria(self, in_out_online, task_type):
-        return (not in_out_online or self.in_out_online == in_out_online ) and \
-            (not task_type or self.task_type == task_type)
+    def check_criteria(self, in_out_everywhere, task_type):
+        return (not in_out_everywhere or (self.in_out_everywhere == in_out_everywhere)) and \
+               (not task_type or self.task_type == task_type)
 

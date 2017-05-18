@@ -6,10 +6,12 @@ from collections import defaultdict
 
 from task import Task
 IN, OUT, ONLINE = range(3)
-task_types = ['sport & body', 'be good', 'adventures', 'waste my time', 'culture']
+
 
 
 class TaskDB:
+
+    task_types = ['sport & body', 'be good', 'adventures', 'waste my time', 'culture']
 
     def __init__(self, filename=''):
         if filename:
@@ -27,7 +29,7 @@ class TaskDB:
 
     def insert_task(self, title, desc, creator, in_out_online, task_type, location, value):
         self.tasks.append(Task(task_id=self.counter + 1, title=title, desc=desc, creator= creator,
-                               in_out_online=in_out_online, task_type=task_type, location=location, value=value))
+                               in_out_everywhere=in_out_online, task_type=task_type, location=location, value=value))
         self.counter += 1
         self.save(self.filename)
 
