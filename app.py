@@ -6,16 +6,31 @@ app = Flask(__name__)
 
 Bootstrap(app)
 
-class DummyTask:
-    caption = "Go fly a kite"
-    description = "Go outside and fly the biggest kite you can find"
-    points = 25
+tasks_json = {
+    "tasks" : [ 
+        { 
+            "caption" : "Go fly a kite",
+            "description" : "Go outside and fly the biggest kite you can find",
+            "points" : 25,
+        },
+        { 
+            "caption" : "Go fly another kite",
+            "description" : "Go outside and fly the second biggest kite you can find",
+            "points" : 30,
+        },
+        { 
+            "caption" : "Go fly a third kite",
+            "description" : "Go outside and fly the third biggest kite you can find",
+            "points" : 35,
+        },
+    ],
+}
 
 
 @app.route('/')
 @app.route('/<param>')
 def main(param='hike'):
-    return render_template('explore.html', tasks = [DummyTask] * 3)
+    return render_template('explore.html', tasks = tasks_json)
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
