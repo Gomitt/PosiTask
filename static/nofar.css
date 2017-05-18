@@ -108,12 +108,21 @@
 {
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 47px;
-  line-height : 85.19px;
+  font-size : 30px;
   letter-spacing : 1.88px;
   color : #FFFFFF !important;
   color : rgb(255, 255, 255) !important;
 }
+.NormalCharacterStyle5_small
+{
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
+  font-weight : bold;
+  font-size : 10px;
+  color : #FFFFFF !important;
+  color : rgb(255, 255, 255) !important;
+}
+
+
 .NormalCharacterStyle4
 {
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
