@@ -66,3 +66,6 @@ class Task:
     def inc_del_count(self):
         self.del_counter += 1
 
+    def check_fit(self, words, creator, in_out_online, task_type, location, value):
+        return (self.creator == creator) and (self.in_out_online == in_out_online) and (self.task_type == task_type)
+
