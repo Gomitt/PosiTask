@@ -8,3 +8,8 @@
 .nav-tabs, .nav-pills {
     text-align:center;
 }
+
+.row {
+    margin: 5px;
+
+}
