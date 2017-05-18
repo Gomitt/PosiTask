@@ -22,44 +22,67 @@
   Create a new task
 {% endblock %} 
 {% block content %}
-	<div class="row text-center">
-		<input type="text" class="form-control" placeholder="Title">
-	</div>
-	
-	<div class="row text-center">
-	 <textarea class="form-control" rows="3"  placeholder="Description"></textarea>
-	</div>
 
-	<div class="row text-center">
-			<select class="form-control">
+	<form name = "create" id="createForm" action="create" method = "POST">
+		<div class="row text-center">
+			<input type="text" class="form-control" placeholder="Title" name="title">
+		</div>
+
+		<div class="row text-center">
+	 		<textarea class="form-control" rows="3"  placeholder="Description" name="description"></textarea>
+		</div>
+
+		<div class="row text-center" data-toggle="buttons" name="time">
+			<label class="btn btn-primary ">
+				<input type="radio" name="time" value="1m" id="opt-1m" autocomplete="off" checked> 1m
+			</label>
+			<label class="btn btn-primary active">
+				<input type="radio" name="time" value="10m" id="opt-10m" autocomplete="off" checked> 10m
+			</label>
+			<label class="btn btn-primary ">
+				<input type="radio" name="time" value="3hr" id="opt-3hr" autocomplete="off" checked> 3hr
+			</label>
+			<label class="btn btn-primary ">
+				<input type="radio" name="time" value="1d" id="opt-1d" autocomplete="off" checked> 1d
+			</label>
+			<label class="btn btn-primary ">
+				<input type="radio" name="time" value="1w" id="opt-1w" autocomplete="off" checked> 1w
+			</label>
+		</div>
+
+
+
+		<div class="row text-center">
+			<select class="form-control" name="category">
 				{% for i in ['sport & body', 'posiTask', 'socializing', 'friendships and family', 'adventures',
 							  'waste my time', 'read and learn', 'be good', 'enviroment', 'music and art', 'kids']%}
 				  <option>{{ i }}</option>
 				{% endfor %}
 			</select>
-	</div>
-
-	<div class="row text-center" data-toggle="buttons">
-	  <label class="btn btn-primary active">
-		<input type="radio" name="options" id="opt-indoor" autocomplete="off" checked> Indoor
-	  </label>
-	  <label class="btn btn-primary">
-		<input type="radio" name="options" id="opt-outdoor" autocomplete="off"> Outdoor
-	  </label>
-
-	<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-		  Online
-		</button>
-	</div>
-
-
-	<div class="row text-center">
-		<div class="btn-group">
-			<button type="button" class="btn btn-success">Create!</button>
 		</div>
-	</div>
+
+		<div class="row text-center" data-toggle="buttons" name="location">
+			<label class="btn btn-primary active">
+				<input type="radio" name="location" value="indoor" id="opt-indoor" autocomplete="off" checked> Indoor
+			</label>
+			<label class="btn btn-primary">
+				<input type="radio" name="location" value="outdoor" id="opt-outdoor" autocomplete="off"> Outdoor
+			</label>
+		</div>
 
 
+		<div class="row text-center" data-toggle="buttons" name="online">
+			<label class="btn btn-primary active">
+				<input type="radio" name="online" value="online" id="opt-online" autocomplete="off" checked> online
+			</label>
+			<label class="btn btn-primary">
+				<input type="radio" name="online" value="offline" id="opt-offline" autocomplete="off"> offline
+			</label>
+		</div>
 
+		<div class="row text-center">
+			<button id = "createBtn" class="btn btn-success" type="submit">Create</button>
+		</div>
+	</form>
 
 {% endblock %}
