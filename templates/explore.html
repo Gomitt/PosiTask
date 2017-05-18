@@ -57,7 +57,7 @@
 				$(this).parent().carousel('next');
 			});
 			$("#do").click(function() {
-				window.location.replace("{{url_for('do')}}");
+				window.location.replace("{{url_for('do', task_id=12)}}");
 			});
 			$("#create").click(function() {
 				window.location.replace("{{url_for('create')}}");

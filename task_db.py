@@ -1,10 +1,13 @@
 import time
 import pickle
 from random import shuffle
-# from tinydb import TinyDB, Query
+from collections import defaultdict
+
 
 from task import Task
 IN, OUT, ONLINE = range(3)
+task_types = ['sport & body', 'be good', 'adventures', 'waste my time', 'culture']
+
 
 class TaskDB:
 
@@ -27,6 +30,12 @@ class TaskDB:
                                in_out_online=in_out_online, task_type=task_type, location=location, value=value))
         self.counter += 1
         self.save(self.filename)
+
+    def get_tasks_dict(self):
+        res = defaultdict(list)
+        for task in self.tasks:
+            res[task.get_type()].append(task.get_json())
+        return dict(res)
 
     def get_tasks(self, in_out_online, task_type, num_of_tasks=None):
         return_list = [t for t in self.tasks if t.check_criteria(in_out_online=in_out_online, task_type=task_type)]

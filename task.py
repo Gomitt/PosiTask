@@ -12,8 +12,8 @@ class Task:
         self.description = desc
         self.creator = creator
         self.in_out_online = in_out_online  # in / out / online
-        self.task_type = task_type          # kids /sport & body /posiTask /socializing /friendships and family /
-                                    # adventures /waste my time /read and learn /be good /enviroment/ music and art
+        self.task_type = task_type          # sport & body / be good / adventures / waste my time / culture
+
         self.location = location
         self.value = value
         self.creation_time = time.time()
