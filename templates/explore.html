@@ -30,7 +30,7 @@
 							<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
 								<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
 									<h4 class="' + panel_title_styles[task_type_index] + ' panel-title">\
-										<a data-toggle="collapse" href="#collapse_1_end">Create a task!</a>\
+										<a data-toggle="collapse" href="#collapse_1_end">CREATE A TASK!</a>\
 									</h4>\
 								</div>\
 								<div id="collapse_1_end" class="panel-collapse collapse">\
@@ -47,10 +47,10 @@
 									<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
 										<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
 											<h4 class="panel-title">\
-												<a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">{{ task["title"] }}</a>\
+												<a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">' + '{{ task["title"] }}'.toUpperCase() + '</a>\
 											</h4>\
 											<h4 class="panel-title">\
-												<div class="' + task_title_styles[task_type_index] + '">{{ task_type }}</div>\
+												<div class="' + task_title_styles[task_type_index] + '">' + '{{task_type}}'.toUpperCase() + '</div>\
 											</h4>\
 										</div>\
 										<div id="collapse_' + task_type_index + '_{{loop.index0}}" class="panel-collapse collapse">\
