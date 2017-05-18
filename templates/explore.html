@@ -10,6 +10,46 @@
 	<script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
 	<script>
 		$(document).ready(function() {
+			var task_htmls = []
+			{% for task in tasks["tasks"] %}
+				task_htmls.push('<div class="item">\
+						<div class="panel-group">\
+							<div class="panel panel-default">\
+								<div class="panel-heading">\
+									<h4 class="panel-title">\
+										<a data-toggle="collapse" href="#collapse_1_{{loop.index0}}">{{ task["title"] }}</a>\
+									</h4>\
+								</div>\
+								<div id="collapse_1_{{loop.index0}}" class="panel-collapse collapse">\
+									<div class="panel-body">{{ task["description"] }}</div>\
+									<div class="panel-footer">This task is worth {{ task["value"] }} shmekels</div>\
+								</div>\
+							</div>\
+						</div>\
+					</div>')
+			{% endfor %}
+			var new_task_html = '<div class="item">\
+					<div class="panel-group">\
+						<div class="panel panel-default">\
+							<div class="panel-heading">\
+								<h4 class="panel-title">\
+									<a data-toggle="collapse" href="#collapse_1_end">Create a task!</a>\
+								</h4>\
+							</div>\
+							<div id="collapse_1_end" class="panel-collapse collapse">\
+							<div class="panel-body">Create a new task for others to enjoy</div>\
+							<div class="panel-footer">This task is worth 50 shmekels</div>\
+						</div>\
+					</div>\
+				</div>'
+			var carousel_content = ""
+			for (i = 0; i < task_htmls.length; i++) {
+				carousel_content += task_htmls[i];
+			}
+			carousel_content += new_task_html
+			$("#taskCarousel").find(".carousel-inner").html(carousel_content)
+			$("#taskCarousel").find(".carousel-inner").find(".item").first().addClass('active');
+			
 			$(".carousel-inner").swiperight(function() {
 				//$(this).parent().carousel('prev');
 			});
@@ -22,12 +62,16 @@
 			$("#create").click(function() {
 				window.location.replace("{{url_for('create')}}");
 			});
+			var ended = false
 			$("#taskCarousel").on("slid.bs.carousel", function (evt) {
 				console.debug("slide transition ended")
 				//console.debug("current slide = ", $(this).find(".active").index())
 				console.debug("next slide = ", $(evt.relatedTarget).index() )
-				if ($(evt.relatedTarget).index() == {{ tasks["tasks"]|length }}) {
-					$(this).html('<div class="carousel-inner"><div class="item">	<div class="panel-group"><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" href="#collapse_1_end">Create a task!</a></h4></div>	<div id="collapse_1_end" class="panel-collapse collapse"><div class="panel-body">Create a new task for others to enjoy</div><div class="panel-footer">This task is worth 50 shmekels</div></div></div></div></div></div><div class="carousel-inner"><div class="item active">	<div class="panel-group"><div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title"><a data-toggle="collapse" href="#collapse_1_end">Create a task!</a></h4></div>	<div id="collapse_1_end" class="panel-collapse collapse"><div class="panel-body">Create a new task for others to enjoy</div><div class="panel-footer">This task is worth 50 shmekels</div></div></div></div></div></div>')
+				console.debug("length = ", {{ tasks["tasks"]|length }} )
+				if ($(evt.relatedTarget).index() == {{ tasks["tasks"]|length }} && !ended) {
+					$(this).find(".carousel-inner").html(new_task_html)
+					$(this).find(".carousel-inner").find(".item").first().addClass('active');
+					ended = true
 				}
 			})
 			
@@ -47,39 +91,8 @@
 
 	<div class="container">
 		<div id="taskCarousel" class="carousel slide" data-interval="">
-			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
-				{% for task in tasks["tasks"] %}
-					<div class="item{% if loop.index0 == 0 %} active{% endif %}">
-						<div class="panel-group">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" href="#collapse_1_{{loop.index0}}">{{ task["title"] }}</a>
-									</h4>
-								</div>
-								<div id="collapse_1_{{loop.index0}}" class="panel-collapse collapse">
-									<div class="panel-body">{{ task["description"] }}</div>
-									<div class="panel-footer">This task is worth {{ task["value"] }} shmekels</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				{% endfor %}
-				<div class="item">
-					<div class="panel-group">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h4 class="panel-title">
-									<a data-toggle="collapse" href="#collapse_1_end">Create a task!</a>
-								</h4>
-							</div>
-							<div id="collapse_1_end" class="panel-collapse collapse">
-							<div class="panel-body">Create a new task for others to enjoy</div>
-							<div class="panel-footer">This task is worth 50 shmekels</div>
-						</div>
-					</div>
-				</div>
+				<!-- Slides added dynamically -->
 			</div>
 		</div>
 	</div>
