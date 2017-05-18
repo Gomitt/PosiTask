@@ -12,6 +12,23 @@
 	<script>
 		$(document).ready(function() {
 			var task_htmls = {}
+			var new_task_html = '<div class="item">\
+				<div class="panel-group">\
+					<div class="DARKBLUEBOX panel panel-default">\
+						<div class="DARKBLUEBOX panel-heading">\
+							<h4 class="NormalCharacterStyle4 panel-title">\
+								<a data-toggle="collapse" href="#collapse_1_end">Create a task!</a>\
+							</h4>\
+						</div>\
+						<div id="collapse_1_end" class="panel-collapse collapse">\
+							<div class="BLUEBOX panel-body">Create a new task for others to enjoy</div>\
+							<div class="DARKBLUEBOX panel-footer">This task is worth 50 shmekels</div>\
+						</div>\
+					</div>\
+				</div>\
+			</div>'
+			var carousel_content = ""
+			
 			{% for task_type in tasks %}
 				task_htmls["{{ task_type }}"] = []
 				{% for task in tasks[task_type] %}
@@ -31,31 +48,32 @@
 							</div>\
 						</div>')
 				{% endfor %}
-			{% endfor %}
-			var new_task_html = '<div class="item">\
-					<div class="panel-group">\
-						<div class="DARKBLUEBOX panel panel-default">\
-							<div class="DARKBLUEBOX panel-heading">\
-								<h4 class="NormalCharacterStyle4 panel-title">\
-									<a data-toggle="collapse" href="#collapse_1_end">Create a task!</a>\
-								</h4>\
-							</div>\
-							<div id="collapse_1_end" class="panel-collapse collapse">\
-							<div class="BLUEBOX panel-body">Create a new task for others to enjoy</div>\
-							<div class="DARKBLUEBOX panel-footer">This task is worth 50 shmekels</div>\
-						</div>\
-					</div>\
-				</div>'
-				
-			var carousel_content = ""
-			for (var task_type in task_htmls) {
-				for (i = 0; i < task_htmls[task_type].length; i++) {
-					carousel_content += task_htmls[task_type][i];
+				carousel_content = '<div id="{{task_type}}Carousel" class="carousel slide" data-interval="">\
+										<div class="carousel-inner">'
+				for (i = 0; i < task_htmls["{{task_type}}"].length; i++) {
+					carousel_content += task_htmls["{{task_type}}"][i];
 				}
-			}
-			carousel_content += new_task_html
-			$("#taskCarousel").find(".carousel-inner").html(carousel_content)
-			$("#taskCarousel").find(".carousel-inner").find(".item").first().addClass('active');
+				carousel_content += new_task_html + '</div></div>'
+				$(".container").html(carousel_content)
+				$(".container").find(".carousel").find(".carousel-inner").find(".item").first().addClass('active');
+				
+				
+				{
+					var ended = false
+					$("#{{task_type}}Carousel").on("slid.bs.carousel", function (evt) {
+						console.debug("slide transition ended")
+						//console.debug("current slide = ", $(this).find(".active").index())
+						console.debug("next slide = ", $(evt.relatedTarget).index() )
+						console.debug("length = ", task_htmls["{{task_type}}"].length )
+						if ($(evt.relatedTarget).index() == task_htmls["{{task_type}}"].length && !ended) {
+							console.debug("ended")
+							$(this).find(".carousel-inner").html(new_task_html + new_task_html)
+							$(this).find(".carousel-inner").find(".item").first().addClass('active');
+							ended = true
+						}
+					})
+				}
+			{% endfor %}
 			
 			$(".carousel-inner").swiperight(function() {
 				//$(this).parent().carousel('prev');
@@ -69,20 +87,6 @@
 			$("#create").click(function() {
 				window.location.replace("{{url_for('create')}}");
 			});
-			var ended = false
-			$("#taskCarousel").on("slid.bs.carousel", function (evt) {
-				console.debug("slide transition ended")
-				//console.debug("current slide = ", $(this).find(".active").index())
-				console.debug("next slide = ", $(evt.relatedTarget).index() )
-				console.debug("length = ", {{ tasks["tasks"]|length }} )
-				if ($(evt.relatedTarget).index() == {{ tasks["tasks"]|length }} && !ended) {
-					$(this).find(".carousel-inner").html(new_task_html)
-					$(this).find(".carousel-inner").find(".item").first().addClass('active');
-					ended = true
-				}
-			})
-			
-			
 		});
 	</script>
 {% endblock %}
@@ -97,10 +101,5 @@
     {% endfor %}
 
 	<div class="container">
-		<div id="taskCarousel" class="carousel slide" data-interval="">
-			<div class="carousel-inner">
-				<!-- Slides added dynamically -->
-			</div>
-		</div>
 	</div>
 {% endblock %}
