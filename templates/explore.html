@@ -22,6 +22,7 @@
 			$("#creation-alert").fadeOut(2000);
 			{% for task_type in tasks %}
 				{
+					console.debug("task_type = {{task_type}}, length = {{ tasks[task_type]|length}}")
 					var carousel_content = ""
 					new_task_htmls["{{task_type}}"] =  '<div class="item" id="create_{{task_type}}">\
 						<div class="panel-group">\
