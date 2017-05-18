@@ -6,7 +6,7 @@ IN, OUT, EVERYWHERE = range(3)
 
 
 class Task:
-    def __init__(self, task_id, title, desc, creator, in_out_everywhere, task_type, location, value=1):
+    def __init__(self, task_id, title, desc, creator, in_out_everywhere, task_type, location, duration, value=1):
         self.task_id = task_id
         self.title = title
         self.description = desc
@@ -14,6 +14,7 @@ class Task:
         self.in_out_everywhere = in_out_everywhere  # in / out / everywhere
         self.task_type = task_type          # sport & body / be good / adventures / waste my time / culture
         self.location = location
+        self.duration = duration
         self.value = value
         self.creation_time = time.time()
         self.do_counter = 0
@@ -40,6 +41,9 @@ class Task:
 
     def get_loc(self):
         return self.location
+
+    def get_duration(self):
+        return self.duration
 
     def get_value(self):
         return self.value

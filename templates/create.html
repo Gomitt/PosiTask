@@ -24,44 +24,44 @@
 	 		<textarea class="form-control" rows="3"  placeholder="Description" name="description"></textarea>
 		</div>
 
-		<div class="row text-center" data-toggle="buttons" name="time">
+		<div class="row text-center" data-toggle="buttons" name="duration">
 			Task duration:
 			<label class="btn btn-primary ">
-				<input type="radio" name="time" value="1m" id="opt-1m" autocomplete="off" checked> 1m
+				<input type="radio" name="duration" value="1m" id="opt-1m" autocomplete="off" checked> 1m
 			</label>
 			<label class="btn btn-primary active">
-				<input type="radio" name="time" value="10m" id="opt-10m" autocomplete="off" checked> 10m
+				<input type="radio" name="duration" value="10m" id="opt-10m" autocomplete="off" checked> 10m
 			</label>
 			<label class="btn btn-primary ">
-				<input type="radio" name="time" value="3hr" id="opt-3hr" autocomplete="off" checked> 3hr
+				<input type="radio" name="duration" value="3hr" id="opt-3hr" autocomplete="off" checked> 3hr
 			</label>
 			<label class="btn btn-primary ">
-				<input type="radio" name="time" value="1d" id="opt-1d" autocomplete="off" checked> 1d
+				<input type="radio" name="duration" value="1d" id="opt-1d" autocomplete="off" checked> 1d
 			</label>
 			<label class="btn btn-primary ">
-				<input type="radio" name="time" value="1w" id="opt-1w" autocomplete="off" checked> 1w
+				<input type="radio" name="duration" value="1w" id="opt-1w" autocomplete="off" checked> 1w
 			</label>
 		</div>
 
 
 
 		<div class="row text-center">
-			<select class="form-control" name="category">
+			<select class="form-control" name="task_type">
 				{% for i in types %}
 				  <option>{{ i }}</option>
 				{% endfor %}
 			</select>
 		</div>
 
-		<div class="row text-center" data-toggle="buttons" name="location">
+		<div class="row text-center" data-toggle="buttons" name="in_out_everywhere">
 			<label class="btn btn-primary active">
-				<input type="radio" name="location" value="indoor" id="opt-indoor" autocomplete="off" checked> Indoor
+				<input type="radio" name="in_out_everywhere" value="indoor" id="opt-indoor" autocomplete="off" checked> Indoor
 			</label>
 			<label class="btn btn-primary">
-				<input type="radio" name="location" value="outdoor" id="opt-outdoor" autocomplete="off"> Outdoor
+				<input type="radio" name="in_out_everywhere" value="outdoor" id="opt-outdoor" autocomplete="off"> Outdoor
 			</label>
 			<label class="btn btn-primary">
-				<input type="radio" name="location" value="online" id="opt-outdoor" autocomplete="off"> Online
+				<input type="radio" name="in_out_everywhere" value="everywhere" id="opt-outdoor" autocomplete="off"> Everywhere
 			</label>
 		</div>
 

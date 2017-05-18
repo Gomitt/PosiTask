@@ -1,36 +1,16 @@
 from flask import Flask, url_for, request, render_template, jsonify, flash, redirect
 from flask_bootstrap import Bootstrap
 from task_db import TaskDB
-import json
 
 TASKS_TO_SERVE = 5
+DB_FILENAME = 'db/db1.pickle'
 
-db_filename = 'db/db1.pickle'
 app = Flask(__name__)
 app.secret_key = 'many random bytes'
 Bootstrap(app)
 
-tasks_json = {
-    "tasks" : [
-        {
-            "title" : "Go fly a kite",
-            "description" : "Go outside and fly the biggest kite you can find",
-            "value" : 25,
-        },
-        {
-            "title" : "Go fly another kite",
-            "description" : "Go outside and fly the second biggest kite you can find",
-            "value" : 30,
-        },
-        {
-            "title" : "Go fly a third kite",
-            "description" : "Go outside and fly the third biggest kite you can find",
-            "value" : 35,
-        },
-    ],
-}
+db = TaskDB(DB_FILENAME)
 
-db = TaskDB(db_filename)
 
 @app.route('/')
 def main():
@@ -42,7 +22,10 @@ def create():
     if request.method == 'GET':
         return render_template('create.html', types=db.task_types)
     else:
-        # insert task db.insert()
+        for k,v in request.form.items():
+            print(k,v)
+        # title = request.form['title']
+        # db.insert_task()
         flash('Task created!', category='info')
         return redirect(url_for('main'))
 
