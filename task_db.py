@@ -4,6 +4,7 @@ from task import Task
 IN, OUT, EVERYWHERE = "indoor", "outdoor", "everywhere"
 task_types = ['sport & body', 'be good', 'adventures', 'waste my time', 'culture']
 
+
 class TaskDB:
 
     task_types = task_types
@@ -21,10 +22,10 @@ class TaskDB:
     def save(self, filename):
         pickle.dump({'task_dict': self.tasks_dict, 'max_id': self.max_id}, open(filename, "wb"), protocol = 2)
 
-    def insert_task(self, title, desc, creator, in_out_everywhere, task_type, location, duration, value):
+    def insert_task(self, title, desc, creator, in_out_everywhere, task_type, location, duration, value, comments):
         self.tasks_dict[task_type].append(Task(task_id=self.max_id + 1, title=title, desc=desc, creator=creator,
                                                in_out_everywhere=in_out_everywhere, task_type=task_type,
-                                               location=location, duration=duration, value=value))
+                                               location=location, duration=duration, value=value, comments=comments))
         self.max_id += 1
 
     def get_tasks_dict(self):

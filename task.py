@@ -2,8 +2,11 @@
 import time
 import json
 
+
 class Task:
-    def __init__(self, task_id, title, desc, creator, in_out_everywhere, task_type, location, duration, value=1):
+
+    def __init__(self, task_id, title, desc, creator, in_out_everywhere, task_type,
+                 location, duration, comments, value=1):
         self.task_id = task_id
         self.title = title
         self.description = desc
@@ -12,6 +15,7 @@ class Task:
         self.task_type = task_type          # sport & body / be good / adventures / waste my time / culture
         self.location = location
         self.duration = duration
+        self.comments = comments
         self.value = value
         self.creation_time = time.time()
         self.do_counter = 0
@@ -44,6 +48,12 @@ class Task:
 
     def get_value(self):
         return self.value
+
+    def get_comments(self):
+        return self.comments
+
+    def add_comments(self, user, comment):
+        self.comments[user] = comment
 
     def get_creation_time(self):
         return self.creation_time
