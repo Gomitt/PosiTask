@@ -25,4 +25,4 @@ for task_type, vals in db.get_tasks_dict().items():
         print(t.get_json())
 
 
-db.save('db/db1.pickle')
+db.save('db/db.pickle')
