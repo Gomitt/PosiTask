@@ -28,11 +28,14 @@ def create():
         task_type = request.form['task_type']
         duration = request.form['duration']
         in_out_everywhere = request.form['in_out_everywhere']
+        task_comments = {'Mottig': 'Amazing task, really made me smile!!!',
+                    'Nofar': 'Totally changed my life :)',
+                    'Eshed The King': 'How am I ??',
+                    'LouisL': 'I wish I could\'ve go back in time and do it again'}
         try:
             db.insert_task(title=title, desc=description, creator='Motti The King', in_out_everywhere=in_out_everywhere,
                            task_type=task_type, location='Jerusalem', duration=duration, value=1,
-                           comments={'Mottig': 'Amazing task, really made me smile!!!',
-                                     'Nofar': 'Totaly changed my life :)'})
+                           comments=task_comments)
         except:
             flash('Task creation faild!', category='error')
             return redirect(url_for('create'))
