@@ -61,6 +61,10 @@
 			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			hours = String(hours).length == 1 ? "0" + String(hours) : String(hours);
+			minutes = String(minutes).length == 1 ? "0" + String(minutes) : String(minutes);
+			seconds = String(seconds).length == 1 ? "0" + String(seconds) : String(seconds);
+
 			var s = days + "d " + hours + ":" + minutes + ":" + seconds;
 
 			// If the count down is finished, write some text
@@ -105,13 +109,15 @@
     </div>
 
     <div class="text-center">
-		<div class="task-title" id="title">{{ task.title }}</div>
+		<div class="task-title" id="title">{{ task.title.upper() }}</div>
         <div id="description"> {{ task.description }}</div>
 		<div id="clock-container" class="container-fluid">
 		  <div class="row board-container">
 			<div id="clock" class="board clock-text">time</div>
 		  </div>
 		</div>
+
+		<hr style="width: 60%; color: white; height: 1px; background-color:white;" />
 
 		<div class="row text-center">
 		  <span class="do-label">TYPE</span>
