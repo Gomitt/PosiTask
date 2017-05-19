@@ -57,8 +57,8 @@ html,body{height:100%;margin:0;padding:0;}
 .board{
     background : #E0E0E0;
     background : rgba(224, 224, 224, 1);
-    padding:40px;
     height:100%;
+    padding: 10px;
 
     text-align: left;
   border-radius : 20px;
@@ -88,7 +88,7 @@ html,body{height:100%;margin:0;padding:0;}
 }
 
 .comments-user {
-  margin: 5px;
+  margin-left: 10px;
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 16px;
@@ -97,9 +97,8 @@ html,body{height:100%;margin:0;padding:0;}
 }
 
 .comments-comment {
-  margin: 5px;
   margin-left: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-style: italic;
   font-size : 16px;
