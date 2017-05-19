@@ -30,7 +30,9 @@ def create():
         in_out_everywhere = request.form['in_out_everywhere']
         try:
             db.insert_task(title=title, desc=description, creator='Motti The King', in_out_everywhere=in_out_everywhere,
-                           task_type=task_type, location='Jerusalem', duration=duration, value=1)
+                           task_type=task_type, location='Jerusalem', duration=duration, value=1,
+                           comments={'Mottig': 'Amazing task, really made me smile!!!',
+                                     'Nofar': 'Totaly changed my life :)'})
         except:
             flash('Task creation faild!', category='error')
             return redirect(url_for('create'))
@@ -45,6 +47,7 @@ def do(task_id=None):
     return render_template('do.html', task=task)
 
 
-@app.route('/comments/')
-def comments():
-    return render_template('comments.html')
+@app.route('/comments/<task_id>')
+def comments(task_id=None):
+    task_comments = db.get_by_id(int(task_id)).get_comments()
+    return render_template('comments.html', comments=task_comments)
