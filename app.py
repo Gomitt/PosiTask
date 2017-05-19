@@ -52,5 +52,5 @@ def do(task_id=None):
 
 @app.route('/comments/<task_id>')
 def comments(task_id=None):
-    task_comments = db.get_by_id(int(task_id)).get_comments()
-    return render_template('comments.html', comments=task_comments)
+    task_comments = db.get_by_id(int(task_id))
+    return render_template('comments.html', task=task_comments)
