@@ -9,14 +9,15 @@
     text-align:center;
 }
 
+.navbar {
+    margin: 0px;
+}
+
 .row {
     margin: 5px;
-
 }
 
 .panel-group {
-    padding-left: 5px !important;
-    padding-right: 5px !important;
     margin: 0px !important;
     border: 0px !important;
     box-shadow: none !important;
@@ -78,4 +79,8 @@
     -moz-transition: 0.6s, ease-in-out, left;
     -o-transition: 0.6s, ease-in-out, left;
     transition: 0.6s, ease-in-out, left;
+}
+
+.container {
+    padding: 0px;
 }
