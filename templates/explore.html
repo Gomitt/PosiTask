@@ -1,201 +1,236 @@
-{% extends "bootstrap/base.html" %}
-{% block styles %}
-{{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='style.css')}}">
-<link rel="stylesheet" href="{{url_for('.static', filename='nofar.css')}}">
-{% endblock %}
+    {% extends "bootstrap/base.html" %}
+    {% block styles %}
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('.static', filename='style.css')}}">
+    <link rel="stylesheet" href="{{url_for('.static', filename='nofar.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    {% endblock %}
 
-{% block scripts %}
-	{{super()}}
-	<script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.mobile.custom.min.js') }}"></script>
-	<script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-	<script>
-		$(document).ready(function() {
-			var task_htmls = {}
-			var new_task_htmls = {}
-			var panel_heading_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
-			var panel_title_styles = ["NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4"]
-			var panel_value_styles = ["NormalCharacterStyle5", "NormalCharacterStyle5", "NormalCharacterStyle5", "NormalCharacterStyle5", "NormalCharacterStyle5"]
-			var task_title_styles = ["NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle7"]
-			var panel_body_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
-			var panel_footer_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
-			var task_type_index = 0
-			$("#creation-alert").fadeOut(2000);
-			console.debug("max_id = {{num_tasks}}")
-			{% for task_type in tasks %}
-				{
-					console.debug("task_type = {{task_type}}, length = {{ tasks[task_type]|length}}")
-					var carousel_content = ""
-					new_task_htmls["{{task_type}}"] =  '<div class="item" id="create_{{task_type}}">\
-						<div class="panel-group">\
-							<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
-								<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
-									<h4 class="' + panel_title_styles[task_type_index] + ' panel-title">\
-										<a data-toggle="collapse" href="#collapse_1_end">CREATE A TASK!</a>\
-									</h4>\
-								</div>\
-								<div id="collapse_1_end" class="panel-collapse collapse">\
-									<div class="' + panel_body_styles[task_type_index] + ' panel-body">Create a new task for others to enjoy</div>\
-								</div>\
-							</div>\
-						</div>\
-					</div>'
-					task_htmls["{{task_type}}"] = []
-					{% for task in tasks[task_type] %}
-						task_htmls["{{task_type}}"].push('<div class="item" id="task_{{task.task_id}}">\
-								<div class="panel-group">\
-									<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
-										<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
-											<h4 class="align_right panel-title">\
-												<div class="' + panel_value_styles[task_type_index]+ '_small"><br><br></div>\
-												<div class="' + panel_value_styles[task_type_index]+ '">' + {{ task["value"] }} + '</div>\
-												<div class="' + panel_value_styles[task_type_index]+ '_small">Shmekels</div>\
-											</h4>\
-											<div class="table_crap">\
-												<h4 class="align_top panel-title">\
-													<a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">' + '{{ task["title"] }}'.toUpperCase() + '</a>\
-												</h4>\
-												<h4 class="align_bottom panel-title">\
-													<div class="' + task_title_styles[task_type_index] + '">' + '{{task_type}}'.toUpperCase() + '</div>\
-												</h4>\
-											</div>\
-										</div>\
-										<div id="collapse_' + task_type_index + '_{{loop.index0}}" class="panel-collapse collapse">\
-											<div class="' + panel_body_styles[task_type_index] + ' panel-body">\
-											<table class="table borderless">\
-													<tbody>\
-													  <tr>\
-														<td class="td-center"><span class="details-icon glyphicon glyphicon-option-horizontal"></span></td>\
-														<td>{{ task["description"] }}</td>\
-													  </tr>\
-													  <tr>\
-														<td class="td-center"><span class="details-icon glyphicon glyphicon-thumbs-up"></span></td>\
-														<td>done by 145 people</td>\
-													  </tr>\
-													  <tr>\
-														<td class="td-center"><span class="details-icon glyphicon glyphicon-road"></span></td>\
-														<td>{{ task["in_out_everywhere"] }}</td>\
-													  </tr>\
-													  <tr>\
-														<td class="td-center"><span class="details-icon glyphicon glyphicon-time"></span></td>\
-														<td>{{ task["duration"] }}</td>\
-													  </tr>\
-													</tbody>\
-												  </table>\</div>\
-										</div>\
-									</div>\
-								</div>\
-							</div>')
-					{% endfor %}
-					carousel_content = '<div id="' + task_type_index + 'Carousel" class="carousel slide" data-interval="">\
-											<div class="carousel-inner">'
-					for (i = 0; i < task_htmls["{{task_type}}"].length; i++) {
-						carousel_content += task_htmls["{{task_type}}"][i];
-					}
-					carousel_content += new_task_htmls["{{task_type}}"] + '</div></div>'
-					$(".container").html($(".container").html() + carousel_content)
-					$("#" + task_type_index + "Carousel").find(".carousel-inner").find(".item").first().addClass('active');
-					task_type_index += 1;
-				}
-			{% endfor %}
-			task_type_index = 0
-			var ended = {}
-			{% for task_type in tasks %}
-				{
-					ended["{{task_type}}"] = false
-					$("#" + task_type_index + "Carousel").on("slid.bs.carousel", function (evt) {
-						console.debug("slide transition ended")
-						//console.debug("current slide = ", $(this).find(".active").index())
-						console.debug("next slide = ", $(evt.relatedTarget).index() )
-						console.debug("length = ", task_htmls["{{task_type}}"].length )
-						if ($(evt.relatedTarget).index() == task_htmls["{{task_type}}"].length && !ended["{{task_type}}"]) {
-							console.debug("ended")
-							$(this).find(".carousel-inner").html(new_task_htmls["{{task_type}}"] + new_task_htmls["{{task_type}}"])
-							$(this).find(".carousel-inner").find(".item").first().addClass('active');
-							ended["{{task_type}}"] = true
-						}
-					})
-					task_type_index += 1;
-				}
-			{% endfor %}
-			
-			$(".carousel-inner").swiperight(function() {
-				$(this).parent().carousel('prev');
-				var task_id = $(this).find(".active").attr('id')
-				var addr;
-				if (task_id.replace("task_", "") != task_id) {
-					addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id.replace("task_", ""))
-				} else {
-					addr = "{{url_for('create')}}"
-				}
-				window.location.href = addr;
-			});
-			$(".carousel-inner").swipeleft(function() {
-				$(this).parent().carousel('next');
-			});
-			$("#do").click(function() {
-				window.location.replace("{{url_for('do', task_id=12)}}");
-			});
-			$("#create").click(function() {
-				window.location.replace("{{url_for('create')}}");
-			});
-		});
-	</script>
-{% endblock %}
-{% block title %}
-	PosiTask - Happiness, one task at a time
-{% endblock %}
+    {% block scripts %}
+        {{super()}}
+        <script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.mobile.custom.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var task_htmls = {}
+                var new_task_htmls = {}
+                var panel_heading_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
+                var panel_title_styles = ["NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4"]
+                var panel_value_styles = ["NormalCharacterStyle5", "NormalCharacterStyle5", "NormalCharacterStyle5", "NormalCharacterStyle5", "NormalCharacterStyle5"]
+                var task_title_styles = ["NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle7"]
+                var panel_body_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
+                var panel_footer_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
+                var task_type_index = 0
+                $("#creation-alert").fadeOut(2000);
+                console.debug("max_id = {{num_tasks}}")
+                {% for task_type in tasks %}
+                    {
+                        console.debug("task_type = {{task_type}}, length = {{ tasks[task_type]|length}}")
+                        var carousel_content = ""
+                        new_task_htmls["{{task_type}}"] =  '<div class="item" id="create_{{task_type}}">\
+                            <div class="panel-group">\
+                                <div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
+                                    <div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
+                                        <h4 class="' + panel_title_styles[task_type_index] + ' panel-title">\
+                                            <a data-toggle="collapse" href="#collapse_1_end">CREATE A TASK!</a>\
+                                        </h4>\
+                                    </div>\
+                                    <div id="collapse_1_end" class="panel-collapse collapse">\
+                                        <div class="' + panel_body_styles[task_type_index] + ' panel-body">Create a new task for others to enjoy</div>\
+                                    </div>\
+                                </div>\
+                            </div>\
+                        </div>'
+                        task_htmls["{{task_type}}"] = []
+                        {% for task in tasks[task_type] %}
+                            task_htmls["{{task_type}}"].push('<div class="item" id="task_{{task.task_id}}">\
+                                    <div class="panel-group">\
+                                        <div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
+                                            <div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
+                                                <h4 class="align_right panel-title">\
+                                                    <div class="' + panel_value_styles[task_type_index]+ '_small"><br><br></div>\
+                                                    <div class="' + panel_value_styles[task_type_index]+ '">' + {{ task["value"] }} + '</div>\
+                                                    <div class="' + panel_value_styles[task_type_index]+ '_small">Shmekels</div>\
+                                                </h4>\
+                                                <div class="table_crap">\
+                                                    <h4 class="align_top panel-title">\
+                                                        <a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">' + '{{ task["title"] }}'.toUpperCase() + '</a>\
+                                                    </h4>\
+                                                    <h4 class="align_bottom panel-title">\
+                                                        <div class="' + task_title_styles[task_type_index] + '">' + '{{task_type}}'.toUpperCase() + '</div>\
+                                                    </h4>\
+                                                </div>\
+                                            </div>\
+                                            <div id="collapse_' + task_type_index + '_{{loop.index0}}" class="panel-collapse collapse">\
+                                                <div class="' + panel_body_styles[task_type_index] + ' panel-body">\
+                                                <table class="table borderless">\
+                                                        <tbody>\
+                                                          <tr>\
+                                                            <td class="td-center"><span class="details-icon glyphicon glyphicon-option-horizontal"></span></td>\
+                                                            <td>{{ task["description"] }}</td>\
+                                                          </tr>\
+                                                          <tr>\
+                                                            <td class="td-center"><span class="details-icon glyphicon glyphicon-thumbs-up"></span></td>\
+                                                            <td>done by 145 people</td>\
+                                                          </tr>\
+                                                          <tr>\
+                                                            <td class="td-center"><span class="details-icon glyphicon glyphicon-road"></span></td>\
+                                                            <td>{{ task["in_out_everywhere"] }}</td>\
+                                                          </tr>\
+                                                          <tr>\
+                                                            <td class="td-center"><span class="details-icon glyphicon glyphicon-time"></span></td>\
+                                                            <td>{{ task["duration"] }}</td>\
+                                                          </tr>\
+                                                        </tbody>\
+                                                      </table>\</div>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </div>')
+                        {% endfor %}
+                        carousel_content = '<div id="' + task_type_index + 'Carousel" class="carousel slide" data-interval="">\
+                                                <div class="carousel-inner">'
+                        for (i = 0; i < task_htmls["{{task_type}}"].length; i++) {
+                            carousel_content += task_htmls["{{task_type}}"][i];
+                        }
+                        carousel_content += new_task_htmls["{{task_type}}"] + '</div></div>'
+                        $(".container").html($(".container").html() + carousel_content)
+                        $("#" + task_type_index + "Carousel").find(".carousel-inner").find(".item").first().addClass('active');
+                        task_type_index += 1;
+                    }
+                {% endfor %}
+                task_type_index = 0
+                var ended = {}
+                {% for task_type in tasks %}
+                    {
+                        ended["{{task_type}}"] = false
+                        $("#" + task_type_index + "Carousel").on("slid.bs.carousel", function (evt) {
+                            console.debug("slide transition ended")
+                            //console.debug("current slide = ", $(this).find(".active").index())
+                            console.debug("next slide = ", $(evt.relatedTarget).index() )
+                            console.debug("length = ", task_htmls["{{task_type}}"].length )
+                            if ($(evt.relatedTarget).index() == task_htmls["{{task_type}}"].length && !ended["{{task_type}}"]) {
+                                console.debug("ended")
+                                $(this).find(".carousel-inner").html(new_task_htmls["{{task_type}}"] + new_task_htmls["{{task_type}}"])
+                                $(this).find(".carousel-inner").find(".item").first().addClass('active');
+                                ended["{{task_type}}"] = true
+                            }
+                        })
+                        task_type_index += 1;
+                    }
+                {% endfor %}
 
-{% block content %}
-    <nav class="navbar navbar-default">
-        <div class="container-fluid" style="height: 68px;width:100%;background-color:#F99370;">
-            <!-- Brand and toggle get grouped for better mobile display -->            
-            <div class="navbar-header" style="height: 60px;width:226px;margin-top:8px;margin-left:12px;background-color:#F99370;float:left">
-                <a href="/" style="height: 60px;margin:0px;background-color:#F99370;">
-                    <img src="{{url_for('.static', filename='icons/posi.svg')}}" style="width:100%;height:60px;border:0px;">
-                </a>
+                $(".carousel-inner").swiperight(function() {
+                    $(this).parent().carousel('prev');
+                    var task_id = $(this).find(".active").attr('id')
+                    var addr;
+                    if (task_id.replace("task_", "") != task_id) {
+                        addr = "{{url_for('do', task_id='ttt')}}".replace("ttt", task_id.replace("task_", ""))
+                    } else {
+                        addr = "{{url_for('create')}}"
+                    }
+                    window.location.href = addr;
+                });
+                $(".carousel-inner").swipeleft(function() {
+                    $(this).parent().carousel('next');
+                });
+                $("#do").click(function() {
+                    window.location.replace("{{url_for('do', task_id=12)}}");
+                });
+                $("#create").click(function() {
+                    window.location.replace("{{url_for('create')}}");
+                });
+            });
+        </script>
+    {% endblock %}
+    {% block title %}
+        PosiTask - Happiness, one task at a time
+    {% endblock %}
+
+    {% block content %}
+        <nav class="navbar navbar-default">
+            <div class="container-fluid" style="height: 68px;width:100%;background-color:#F99370;">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header" style="height: 60px;width:226px;margin-top:8px;margin-left:12px;background-color:#F99370;float:left">
+                    <a href="/" style="height: 60px;margin:0px;background-color:#F99370;">
+                        <img src="{{url_for('.static', filename='icons/posi.svg')}}" style="width:100%;height:60px;border:0px;">
+                    </a>
+                </div>
+                <div class="navbar-header" style="height: 60px;width:68px;margin:4px;background-color:#F99370;float:right">
+                    <a href="{{url_for('create')}}" style="height: 100%;margin:0px;background-color:#F99370;">
+                        <img src="{{url_for('.static', filename='icons/plus.svg')}}" style="width:100%;height:100%;border:0px;">
+                    </a>
+                </div>
             </div>
-           <div class="navbar-header" style="height: 60px;width:68px;margin:4px;background-color:#F99370;float:right">
-                <a href="{{url_for('create')}}" style="height: 100%;margin:0px;background-color:#F99370;">
-                    <img src="{{url_for('.static', filename='icons/plus.svg')}}" style="width:100%;height:100%;border:0px;">
-                </a>
+        </nav>
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid" style="height: 33px;width:100%;background-color:whitesmoke;">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="row text-center" data-toggle="buttons" name="duration">
+
+                    <select class="selectpicker" multiple data-width=30%>
+                        <option>Sport & Body</option>
+                        <option>Be Good</option>
+                        <option>Adventures</option>
+                        <option>Waste my time</option>
+                        <option>culture</option>
+                    </select>
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <select class="selectpicker" multiple data-width=30%>
+                        <option>10 mins</option>
+                        <option>30 mons</option>
+                        <option>1 hour</option>
+                        <option>Few hours</option>
+                        <option>Few days</option>
+                    </select>
+
+                    <select class="selectpicker" data-width="fit">
+                        <option>Indoor</option>
+                        <option>Outdoor</option>
+                        <option>Everywhere</option>
+                    </select>
+
+                </div>
+
+        </nav>
+
+
+
+    {#    <div class="row text-center" role="group" aria-label="Button group with nested dropdown">#}
+    {##}
+    {#        <button type="button" class="btn btn-secondary col-md-1">#}
+    {#            <img width="20" src="static/icons/plus.svg"/>#}
+    {#        </button>#}
+    {##}
+    {#        <button type="button" class="btn btn-secondary col-md-10">#}
+    {#            <img  width="80" src="static/icons/pooosi.svg">#}
+    {#        </button>#}
+    {##}
+    {#        <div class="btn-group col-md-1" role="group">#}
+    {#            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+    {#                <img width="20"  src="static/icons/menu.svg">#}
+    {#            </button>#}
+    {#            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1" style="max-width:80px">#}
+    {#                <a class="dropdown-item" type="button">Explore Tasks</a>#}
+    {#                <a class="dropdown-item" type="button">Create a Task</a>#}
+    {#                <a class="dropdown-item" type="button">Settings</a>#}
+    {#                <a class="dropdown-item" type="button">Notifications</a>#}
+    {#                <a class="dropdown-item" type="button">About</a>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+
+
+        {% for message in get_flashed_messages() %}
+            <div id="creation-alert" class="alert alert-success">
+              <strong>{{ message }}</strong>
             </div>
+        {% endfor %}
+
+        <div class="container">
         </div>
-    </nav>
-
-
-
-{#    <div class="row text-center" role="group" aria-label="Button group with nested dropdown">#}
-{##}
-{#        <button type="button" class="btn btn-secondary col-md-1">#}
-{#            <img width="20" src="static/icons/plus.svg"/>#}
-{#        </button>#}
-{##}
-{#        <button type="button" class="btn btn-secondary col-md-10">#}
-{#            <img  width="80" src="static/icons/pooosi.svg">#}
-{#        </button>#}
-{##}
-{#        <div class="btn-group col-md-1" role="group">#}
-{#            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-{#                <img width="20"  src="static/icons/menu.svg">#}
-{#            </button>#}
-{#            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1" style="max-width:80px">#}
-{#                <a class="dropdown-item" type="button">Explore Tasks</a>#}
-{#                <a class="dropdown-item" type="button">Create a Task</a>#}
-{#                <a class="dropdown-item" type="button">Settings</a>#}
-{#                <a class="dropdown-item" type="button">Notifications</a>#}
-{#                <a class="dropdown-item" type="button">About</a>#}
-{#            </div>#}
-{#        </div>#}
-{#    </div>#}
-
-
-    {% for message in get_flashed_messages() %}
-		<div id="creation-alert" class="alert alert-success">
-		  <strong>{{ message }}</strong>
-		</div>
-    {% endfor %}
-
-	<div class="container">
-	</div>
-{% endblock %}
+    {% endblock %}
