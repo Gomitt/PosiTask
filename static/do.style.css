@@ -101,3 +101,31 @@ html,body{height:100%;margin:0;padding:0;}
 hr {
     margin-top: 0px !important;
 }
+
+
+
+.btn
+{
+  margin: 10px;
+  color: #e77b4f;
+  font-weight: bold;
+  background : #FCFCFC;
+  background : rgba(252, 252, 252, 1);
+  border-radius : 5px;
+  -moz-border-radius : 5px;
+  -webkit-border-radius : 5px;
+  box-shadow : 2px 2px 2px rgba(122, 122, 122, 0.35);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#7A7A7A') ;
+}
+
+
+.btn.active{
+  color: #e77b4f;
+  font-weight: bold;
+  background : lightgray;
+  border-radius : 5px;
+  -moz-border-radius : 5px;
+  -webkit-border-radius : 5px;
+  box-shadow : 2px 2px 2px rgba(122, 122, 122, 0.35);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#7A7A7A') ;
+}
