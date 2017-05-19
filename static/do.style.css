@@ -1,0 +1,98 @@
+.line
+{
+  border-style : Solid;
+  border-color : #FFFFFF;
+  border-color : rgba(255, 255, 255, 1);
+  border-width : 3px;
+}
+
+body {
+  background-color : #6787BA;
+  background-color : rgba(103, 135, 186, 1);
+}
+
+.leftwightbox
+{
+  background : #FCFCFC;
+  background : rgba(252, 252, 252, 1);
+  border-radius : 13px;
+  -moz-border-radius : 13px;
+  -webkit-border-radius : 13px;
+  box-shadow : 4px 4px 3px rgba(122, 122, 122, 0.35);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#7A7A7A') ;
+}
+.rightehitebox
+{
+  background : #FCFCFC;
+  background : rgba(252, 252, 252, 1);
+  border-radius : 13px;
+  -moz-border-radius : 13px;
+  -webkit-border-radius : 13px;
+  box-shadow : 4px 4px 3px rgba(122, 122, 122, 0.35);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#7A7A7A') ;
+}
+.menuwhitebox
+{
+  background : #FFFFFF;
+  background : rgba(255, 255, 255, 1);
+  box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
+}
+.ORANGEBOX_3_
+{
+  background : #F99370;
+  background : rgba(249, 147, 112, 1);
+  box-shadow : 4px 4px 3px rgba(137, 33, 46, 0.46);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=4, OffY=4, Color='#89212E') ;
+}
+
+html,body{height:100%;margin:0;padding:0;}
+.board-container{padding:40px;box-sizing:border-box}
+.board{
+    background-color:#F99370;
+    height:100%;
+    padding:40px;
+
+    text-align: center;
+  border-radius : 20px;
+  -moz-border-radius : 20px;
+  -webkit-border-radius : 20px;
+  box-shadow : 7px 7px 5px rgba(7, 48, 73, 0.35);
+  filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=7, OffY=7, Color='#073049') ;
+}
+
+
+.task-title
+{
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
+  font-weight : bold;
+  font-size : 24px;
+  color : white !important;
+  color : rgb(255, 255, 255) !important;
+}
+
+.clock-text
+{
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
+  font-weight : bold;
+  font-size : 24px;
+  color : white !important;
+  color : rgb(255, 255, 255) !important;
+}
+
+.do-label {
+    margin: 5px;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
+  font-size : 18px;
+  color : white !important;
+  color : rgb(255, 255, 255) !important;
+}
+
+.do-value {
+    margin: 5px;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
+  font-weight : bold;
+  font-size : 18px;
+  color : white !important;
+  color : rgb(255, 255, 255) !important;
+}

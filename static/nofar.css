@@ -106,27 +106,35 @@
 }
 .NormalCharacterStyle5
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 47px;
-  line-height : 85.19px;
+  font-size : 30px;
   letter-spacing : 1.88px;
   color : #FFFFFF !important;
   color : rgb(255, 255, 255) !important;
 }
+.NormalCharacterStyle5_small
+{
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
+  font-weight : bold;
+  font-size : 10px;
+  color : #FFFFFF !important;
+  color : rgb(255, 255, 255) !important;
+}
+
+
 .NormalCharacterStyle4
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 22.5px;
-  line-height : 27.6px;
+  font-size : 18px;
   letter-spacing : 0.9px;
   color : #FFFFFF !important;
   color : rgb(255, 255, 255) !important;
 }
 .NormalCharacterStyle2
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 40px;
   color : #EB6559 !important;
@@ -134,7 +142,7 @@
 }
 .NormalCharacterStyle10
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 72px;
   line-height : 81.2px;
@@ -144,7 +152,7 @@
 }
 .NormalCharacterStyle6
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 47px;
   line-height : 49.2px;
@@ -154,15 +162,15 @@
 }
 .NormalCharacterStyle7
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 22.5px;
+  font-size : 16x;
   color : #B2B2B1 !important;
   color : rgb(178, 178, 177) !important;
 }
 .NormalCharacterStyle12
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 72px;
   line-height : 81.2px;
@@ -172,7 +180,7 @@
 }
 .NormalCharacterStyle1
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 40px;
   color : #EB6559 !important;
@@ -180,7 +188,7 @@
 }
 .NormalCharacterStyle
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 40px;
   color : #EB6559 !important;
@@ -188,7 +196,7 @@
 }
 .NormalCharacterStyle9
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 40px;
   color : #8C8C8B !important;
@@ -196,15 +204,15 @@
 }
 .NormalCharacterStyle8
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 22.5px;
+  font-size : 16px;
   color : #7A7A7A !important;
   color : rgb(122, 122, 122) !important;
 }
 .NormalCharacterStyle11
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 72px;
   line-height : 81.2px;
@@ -214,7 +222,7 @@
 }
 .NormalCharacterStyle3
 {
-  font-family : Futura;
+  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 65px;
   color : #EB6559 !important;

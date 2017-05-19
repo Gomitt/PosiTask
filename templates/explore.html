@@ -15,20 +15,23 @@
 			var new_task_htmls = {}
 			var panel_heading_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var panel_title_styles = ["NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4", "NormalCharacterStyle4"]
-			var task_title_styles = ["NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8"]
+			var panel_value_styles = ["NormalCharacterStyle5", "NormalCharacterStyle5", "NormalCharacterStyle5", "NormalCharacterStyle5", "NormalCharacterStyle5"]
+			var task_title_styles = ["NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle8", "NormalCharacterStyle7"]
 			var panel_body_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var panel_footer_styles = ["YELLOWBOX", "PINKBOX", "BLUEBOX", "GREENBOX", "DARKBLUEBOX"]
 			var task_type_index = 0
 			$("#creation-alert").fadeOut(2000);
+			console.debug("max_id = {{num_tasks}}")
 			{% for task_type in tasks %}
 				{
+					console.debug("task_type = {{task_type}}, length = {{ tasks[task_type]|length}}")
 					var carousel_content = ""
 					new_task_htmls["{{task_type}}"] =  '<div class="item" id="create_{{task_type}}">\
 						<div class="panel-group">\
 							<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
 								<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
 									<h4 class="' + panel_title_styles[task_type_index] + ' panel-title">\
-										<a data-toggle="collapse" href="#collapse_1_end">Create a task!</a>\
+										<a data-toggle="collapse" href="#collapse_1_end">CREATE A TASK!</a>\
 									</h4>\
 								</div>\
 								<div id="collapse_1_end" class="panel-collapse collapse">\
@@ -44,12 +47,18 @@
 								<div class="panel-group">\
 									<div class="' + panel_heading_styles[task_type_index] + ' panel panel-default">\
 										<div class="' + panel_heading_styles[task_type_index] + ' panel-heading">\
-											<h4 class="panel-title">\
-												<a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">{{ task["title"] }}</a>\
+											<h4 class="align_right panel-title">\
+												<div class="' + panel_value_styles[task_type_index]+ '">' + {{ task["value"] }} + '</div>\
+												<div class="' + panel_value_styles[task_type_index]+ '_small">Shmekels</div>\
 											</h4>\
-											<h4 class="panel-title">\
-												<div class="' + task_title_styles[task_type_index] + '">{{ task_type }}</div>\
-											</h4>\
+											<div class="table_crap">\
+												<h4 class="align_top panel-title">\
+													<a class="' + panel_title_styles[task_type_index] + '" data-toggle="collapse" href="#collapse_' + task_type_index + '_{{loop.index0}}">' + '{{ task["title"] }}'.toUpperCase() + '</a>\
+												</h4>\
+												<h4 class="align_bottom panel-title">\
+													<div class="' + task_title_styles[task_type_index] + '">' + '{{task_type}}'.toUpperCase() + '</div>\
+												</h4>\
+											</div>\
 										</div>\
 										<div id="collapse_' + task_type_index + '_{{loop.index0}}" class="panel-collapse collapse">\
 											<div class="' + panel_body_styles[task_type_index] + ' panel-body">{{ task["description"] }}</div>\

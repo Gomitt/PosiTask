@@ -1,6 +1,7 @@
 from flask import Flask, url_for, request, render_template, jsonify, flash, redirect
 from flask_bootstrap import Bootstrap
 from task_db import TaskDB
+from nocache import nocache
 
 TASKS_TO_SERVE = 5
 DB_FILENAME = 'db/dbshort.pickle'
@@ -14,7 +15,7 @@ db = TaskDB(DB_FILENAME)
 
 @app.route('/')
 def main():
-    return render_template('explore.html', tasks=db.get_tasks_dict())
+    return render_template('explore.html', tasks=db.get_tasks_dict(), num_tasks=db.max_id)
 
 
 @app.route('/create', methods=['GET', 'POST'])
@@ -38,11 +39,12 @@ def create():
         return redirect(url_for('main'))
 
 
-
-
 @app.route('/do/<task_id>')
 def do(task_id=None):
     task = db.get_by_id(int(task_id))
-    print(task)
     return render_template('do.html', task=task)
 
+
+@app.route('/comments/')
+def comments():
+    return render_template('comments.html')
