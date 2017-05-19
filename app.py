@@ -14,13 +14,11 @@ db = TaskDB(DB_FILENAME)
 
 
 @app.route('/')
-@nocache
 def main():
     return render_template('explore.html', tasks=db.get_tasks_dict(), num_tasks=db.max_id)
 
 
 @app.route('/create', methods=['GET', 'POST'])
-@nocache
 def create():
     if request.method == 'GET':
         return render_template('create.html', types=db.task_types)
@@ -42,7 +40,6 @@ def create():
 
 
 @app.route('/do/<task_id>')
-@nocache
 def do(task_id=None):
     task = db.get_by_id(int(task_id))
     return render_template('do.html', task=task)
