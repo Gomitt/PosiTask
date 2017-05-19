@@ -133,6 +133,11 @@
 		  <span class="do-value">{{ 23 }} PEOPLE</span>
 		</div>
 
+		<div class="row text-center do-value">
+		  <a style="color: white;" href="{{url_for('comments', task_id = task.task_id)}}">Comments</a>
+		</div>
+
+
 		<form name="finish" id="finishForm" action="/" method = "GET">
 			<div class="row text-center">
 				<button id="abortBtn" class="btn btn-lg" type="submit">

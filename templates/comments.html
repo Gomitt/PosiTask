@@ -15,30 +15,21 @@
 {% endblock %}
 
 {% block content %}
-
-    <div class="row text-center">
-        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <button type="button" class="btn btn-secondary">
-                <img width="20" src="{{url_for('.static', filename='icons/cancel.svg')}}"/>
-            </button>
-            <button type="button" class="btn btn-secondary">
-                <img  width="80" src="{{url_for('.static', filename='icons/pooosi.svg')}}">
-            </button>
-
-            <div class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img width="20"  src="{{url_for('.static', filename='icons/menu.svg')}}">
-                </button>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1" style="max-width:80px">
-                    <a class="dropdown-item" type="button">Explore Tasks</a>
-                    <a class="dropdown-item" type="button">Create a Task</a>
-                    <a class="dropdown-item" type="button">Settings</a>
-                    <a class="dropdown-item" type="button">Notifications</a>
-                    <a class="dropdown-item" type="button">About</a>
-                </div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid" style="height: 68px;width:100%;background-color:#F99370;">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header" style="height: 60px;width:226px;margin-top:8px;margin-left:12px;background-color:#F99370;float:left">
+                <a href="/" style="height: 60px;margin:0px;background-color:#F99370;">
+                    <img src="{{url_for('.static', filename='icons/posi.svg')}}" style="width:100%;height:60px;border:0px;">
+                </a>
+            </div>
+           <div class="navbar-header" style="height: 60px;width:68px;margin:4px;background-color:#F99370;float:right">
+                <a href="{{url_for('create')}}" style="height: 100%;margin:0px;background-color:#F99370;">
+                    <img src="{{url_for('.static', filename='icons/plus.svg')}}" style="width:100%;height:100%;border:0px;">
+                </a>
             </div>
         </div>
-    </div>
+    </nav>
 
     <div class="text-center" style="margin-top: 1%; margin-bottom: -35px;">
         <div class="text-uppercase">
