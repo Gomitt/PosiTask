@@ -19,9 +19,8 @@
 		<div class="row board-container">
 			<div id="comments" class="board">
 				{% for user, comment in comments.items() %}
-				    <p><li class="comments-user">{{user}}</li></p>
+				    <li class="comments-user">{{user}}</li>
 				    <p class="comments-comment">{{comment}}</p>
-				    <br>
 				{% endfor %}
 			</div>
 		</div>
