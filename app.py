@@ -4,7 +4,7 @@ from task_db import TaskDB
 from nocache import nocache
 
 TASKS_TO_SERVE = 5
-DB_FILENAME = 'db/dbshort.pickle'
+DB_FILENAME = 'db/db1.pickle'
 
 app = Flask(__name__)
 app.secret_key = 'many random bytes'
