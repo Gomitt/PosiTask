@@ -75,7 +75,7 @@ html,body{height:100%;margin:0;padding:0;}
 {
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 30px;
+  font-size : 24px;
   color : white !important;
   color : rgb(255, 255, 255) !important;
 }
@@ -83,7 +83,7 @@ html,body{height:100%;margin:0;padding:0;}
 .do-label {
     margin: 5px;
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
-  font-size : 24px;
+  font-size : 18px;
   color : white !important;
   color : rgb(255, 255, 255) !important;
 }
@@ -92,7 +92,7 @@ html,body{height:100%;margin:0;padding:0;}
     margin: 5px;
   font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
-  font-size : 24px;
+  font-size : 18px;
   color : white !important;
   color : rgb(255, 255, 255) !important;
 }
