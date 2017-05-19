@@ -13,6 +13,10 @@
     margin: 0px;
 }
 
+.navbar-header {
+    background-color: #F99370;
+}
+
 .row {
     margin: 5px;
 }
