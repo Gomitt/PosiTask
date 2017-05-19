@@ -23,25 +23,30 @@
 }
 
 .panel-heading {
-    height: 80px !important;
-    position: relative;
+    height:100px;
     box-shadow: none !important;
 }
 
+.table_crap {
+    border-collapse:collapse;
+    display : table;
+    height: 100%;
+}
+
 .align_top {
-    position: absolute;
-    top: 20%;
+    display : table-row;
+    vertical-align : top;
+    height : 1px;
 }
 
 .align_bottom {
-    position: absolute;
-    bottom: 25%;
+    display : table-row;
+    vertical-align : bottom;
+    height : 1px;
 }
 
 .align_right {
-    top: 30%;
-    position: absolute;
-    right: 2%;
+    float: right;
     text-align: center;
 }
 
