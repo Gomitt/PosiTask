@@ -12,12 +12,7 @@
 		$("#startBtn").click(function () {
 			setTimeout(function () {
 				$("#startBtn").prop("type", "submit");
-				$("#startBtn").removeClass("btn-success");
-				$("#startBtn").addClass("btn-info");
-				$('#startBtn').html('<span id="startBtnSpan" class="glyphicon glyphicon-play" aria-hidden="true"></span> Stop');
-
-				$("#startBtnSpan").removeClass("glyphicon-play");
-				$("#startBtnSpan").addClass("glyphicon-stop");
+				$('#startBtn').html('STOP');
 
 			});
 			var t = new Date();
