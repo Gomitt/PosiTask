@@ -16,10 +16,18 @@
 
 .navbar {
     margin: 0px;
+    min-height: 0px;
+}
+
+.navbar {
+    border: 0px;
+    display: block;
+    min-width: 0px;
 }
 
 .navbar-header {
     background-color: #F99370;
+    border: 0px;
 }
 
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
@@ -120,6 +128,9 @@
 
 .container {
     padding: 0px;
+    margin: 0px;
+    width:100%;
+}
 }
 
 td {
