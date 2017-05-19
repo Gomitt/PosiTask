@@ -49,6 +49,5 @@ def do(task_id=None):
 
 
 @app.route('/comments/')
-@nocache
 def comments():
     return render_template('comments.html')
