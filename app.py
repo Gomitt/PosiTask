@@ -14,14 +14,11 @@ db = TaskDB(DB_FILENAME)
 
 
 @app.route('/')
-@nocache
 def main():
-    print(db.max_id)
     return render_template('explore.html', tasks=db.get_tasks_dict(), num_tasks=db.max_id)
 
 
 @app.route('/create', methods=['GET', 'POST'])
-@nocache
 def create():
     if request.method == 'GET':
         return render_template('create.html', types=db.task_types)
@@ -33,7 +30,9 @@ def create():
         in_out_everywhere = request.form['in_out_everywhere']
         try:
             db.insert_task(title=title, desc=description, creator='Motti The King', in_out_everywhere=in_out_everywhere,
-                           task_type=task_type, location='Jerusalem', duration=duration, value=1)
+                           task_type=task_type, location='Jerusalem', duration=duration, value=1,
+                           comments={'Mottig': 'Amazing task, really made me smile!!!',
+                                     'Nofar': 'Totaly changed my life :)'})
         except:
             flash('Task creation faild!', category='error')
             return redirect(url_for('create'))
@@ -43,9 +42,12 @@ def create():
 
 
 @app.route('/do/<task_id>')
-@nocache
 def do(task_id=None):
     task = db.get_by_id(int(task_id))
-    print(task)
     return render_template('do.html', task=task)
 
+
+@app.route('/comments/<task_id>')
+def comments(task_id=None):
+    task_comments = db.get_by_id(int(task_id)).get_comments()
+    return render_template('comments.html', comments=task_comments)
