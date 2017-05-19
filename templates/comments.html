@@ -1,0 +1,16 @@
+{% extends "bootstrap/base.html" %}
+{% block scripts %}
+	{{super()}}
+	<script type="text/javascript" src="{{ url_for('static', filename='scripts/jquery.mobile.custom.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+{% endblock %}
+
+{% block title %}
+  Comments
+{% endblock %}
+
+{% block content %}
+
+    <img class="container" src="{{ url_for('static', filename='comments.png') }}">
+
+{% endblock %}

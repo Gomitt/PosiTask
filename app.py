@@ -16,7 +16,6 @@ db = TaskDB(DB_FILENAME)
 @app.route('/')
 @nocache
 def main():
-    print(db.max_id)
     return render_template('explore.html', tasks=db.get_tasks_dict(), num_tasks=db.max_id)
 
 
@@ -46,6 +45,10 @@ def create():
 @nocache
 def do(task_id=None):
     task = db.get_by_id(int(task_id))
-    print(task)
     return render_template('do.html', task=task)
 
+
+@app.route('/comments/')
+@nocache
+def comments():
+    return render_template('comments.html')
