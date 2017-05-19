@@ -12,9 +12,36 @@
 {% endblock %} 
 {% block title %}
   Create a new task
-{% endblock %} 
+{% endblock %}
+
+
 {% block content %}
-	<form name = "create" id="createForm" action="create" method = "POST">
+
+    <div class="row text-center">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" class="btn btn-secondary">
+                <img width="20" src="static/icons/cancel.svg"/>
+            </button>
+            <button type="button" class="btn btn-secondary">
+                <img  width="80" src="static/icons/pooosi.svg">
+            </button>
+
+            <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img width="20"  src="static/icons/menu.svg">
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1" style="max-width:80px">
+                    <a class="dropdown-item" type="button">Explore Tasks</a>
+                    <a class="dropdown-item" type="button">Create a Task</a>
+                    <a class="dropdown-item" type="button">Settings</a>
+                    <a class="dropdown-item" type="button">Notifications</a>
+                    <a class="dropdown-item" type="button">About</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form name = "create" id="createForm" action="create" method = "POST">
 		<div class="row text-center">
 			<input type="text" class="form-control label-font" placeholder="Title" name="title">
 		</div>
