@@ -36,7 +36,6 @@
 								</div>\
 								<div id="collapse_1_end" class="panel-collapse collapse">\
 									<div class="' + panel_body_styles[task_type_index] + ' panel-body">Create a new task for others to enjoy</div>\
-									<div class="' + panel_footer_styles[task_type_index] + ' panel-footer">This task is worth 50 shmekels</div>\
 								</div>\
 							</div>\
 						</div>\
@@ -61,8 +60,27 @@
 											</div>\
 										</div>\
 										<div id="collapse_' + task_type_index + '_{{loop.index0}}" class="panel-collapse collapse">\
-											<div class="' + panel_body_styles[task_type_index] + ' panel-body">{{ task["description"] }}</div>\
-											<div class="' + panel_footer_styles[task_type_index] + ' panel-footer">This task is worth {{ task["value"] }} shmekels</div>\
+											<div class="' + panel_body_styles[task_type_index] + ' panel-body">\
+											<table class="table borderless">\
+													<tbody>\
+													  <tr>\
+														<td class="td-center"><span class="details-icon glyphicon glyphicon-option-horizontal"></span></td>\
+														<td>{{ task["description"] }}</td>\
+													  </tr>\
+													  <tr>\
+														<td class="td-center"><span class="details-icon glyphicon glyphicon-thumbs-up"></span></td>\
+														<td>done by 145 people</td>\
+													  </tr>\
+													  <tr>\
+														<td class="td-center"><span class="details-icon glyphicon glyphicon-road"></span></td>\
+														<td>{{ task["in_out_everywhere"] }}</td>\
+													  </tr>\
+													  <tr>\
+														<td class="td-center"><span class="details-icon glyphicon glyphicon-time"></span></td>\
+														<td>{{ task["duration"] }}</td>\
+													  </tr>\
+													</tbody>\
+												  </table>\</div>\
 										</div>\
 									</div>\
 								</div>\
@@ -139,7 +157,7 @@
             </div>
 
             <div class="navbar-header" style="position:absolute; width: 100%; height: 100%; left: 0; top: 0; text-align: center; margin:0 auto;">
-                <a href="default.asp">
+                <a href="/">
                     <img src="{{url_for('.static', filename='icons/pooosi.svg')}}" style="width:100%;height:100%;border:0;">
                 </a>
             </div>

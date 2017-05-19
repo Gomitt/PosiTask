@@ -79,3 +79,19 @@
     -o-transition: 0.6s, ease-in-out, left;
     transition: 0.6s, ease-in-out, left;
 }
+
+.td-center {
+    text-align: center;
+    width: 50px;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    border: none;
+}
+
+.details-icon {
+    padding: 5px;
+    border: solid !important;
+    text-align: center;
+    border-radius : 5px;
+}
