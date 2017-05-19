@@ -3,7 +3,9 @@ import csv
 
 filename = 'db/posiTask examples - tasks.csv'
 comments = {'Mottig': 'Amazing task, really made me smile!!!',
-            'Nofar': 'Totaly changed my life :)'}
+            'Nofar': 'Totally changed my life :)',
+            'Eshed The King': 'How am I ??',
+            'LouisL': 'I wish I could\'ve go back in time and do it again'}
 db = TaskDB()
 with open(filename, newline='') as f:
     reader = csv.reader(f)
