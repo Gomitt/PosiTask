@@ -112,8 +112,9 @@
 .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
     border: none;
     vertical-align: middle;
-    color: white;
-  font-family : Futura, "Trebuchet MS", Arial, sans-serif;
+  color : white !important;
+  color : rgb(255, 255, 255) !important;
+    font-family : Futura, "Trebuchet MS", Arial, sans-serif;
   font-weight : bold;
   font-size : 18px;
 
